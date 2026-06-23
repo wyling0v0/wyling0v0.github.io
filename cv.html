@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Wanyun Ling</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="nav-dot"></span>
+    Wanyun Ling
+    <span>/ PhD Researcher</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="index.html#publications">Publications</a></li>
+    <li><a href="cv.html" class="active">CV</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container" style="position: relative; z-index: 1; padding-top: 4rem;">
+    <div class="section-label">Curriculum Vitae</div>
+    <h1 class="section-title" style="font-size: clamp(2rem, 5vw, 3.5rem);">Wanyun Ling</h1>
+    <div class="section-divider"></div>
+    <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-sub);">
+      PhD Researcher · TU Munich · GeoAI · Urban Climate · Interpretable ML
+    </p>
+  </div>
+</div>
+
+<section class="section" style="padding-top: 1rem;">
+  <div class="container">
+    <div class="cv-layout">
+
+      <!-- Sidebar ────────────────────────────────────────────── -->
+      <aside class="cv-sidebar">
+        <a href="wanyun_ling_cv_2026.pdf" download class="cv-download">⬇ Download PDF</a>
+
+        <nav>
+          <a href="#education">Education</a>
+          <a href="#research">Research Experience</a>
+          <a href="#publications">Publications</a>
+          <a href="#projects">Projects</a>
+          <a href="#internships">Internships</a>
+          <a href="#skills">Skills</a>
+          <a href="#awards">Awards</a>
+        </nav>
+
+        <div style="margin-top: 2rem; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);">
+          <div style="font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.75rem;">Contact</div>
+          <div style="font-size: 0.8rem; color: var(--text-sub); line-height: 1.8;">
+            <div><a href="mailto:wanyun.ling@tum.de" style="color: var(--cyan);">wanyun.ling@tum.de</a></div>
+            <div>Heilbronn, Germany</div>
+            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); margin-top: 0.4rem;">Last updated: Jun 2026</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CV Content ──────────────────────────────────────────── -->
+      <div>
+
+        <!-- Education ─────────────────────────────────────────── -->
+        <div class="cv-section" id="education">
+          <div class="cv-section-title">Education</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Technical University of Munich</h3>
+              <h4>Doctorate (Dr. rer. pol.) — Spatio-Temporal Data Mining, Time Series Analysis, Urban AI</h4>
+              <ul class="cv-bullets">
+                <li>Supervisor: Prof. Dr. Ziyue Li · Mentor: Dr. Chenxi Liu</li>
+                <li>Smart City Lab · Full-time · 1st year</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Apr. 2026 – Present</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>RWTH Aachen University</h3>
+              <h4>Master of Science — Transforming City Regions</h4>
+              <ul class="cv-bullets">
+                <li>GPA: 1.7 (German scale, <em>Gut</em> / Good) · Top 5%</li>
+                <li>Core courses: Urban Transformation, Territorial Analysis &amp; Digital Tools (GIS), Research Methods, Urban Policies</li>
+                <li>Selected coursework featured in RWTH Städtebau Workflow university publication</li>
+                <li>Award: STIBET I Graduation Scholarship, RWTH Aachen (Feb–Apr 2026)</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Oct. 2023 – Feb. 2026</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Anhui Jianzhu University</h3>
+              <h4>Bachelor of Architecture</h4>
+              <ul class="cv-bullets">
+                <li>GPA: 3.48/5.0 · Top 10%</li>
+                <li>Core courses: Urban Development &amp; Planning Control, Traffic Planning, Urban Sociology, C Programming, Parametric Design</li>
+                <li>Award: Outstanding Graduate Scholarship · Third-Class Scholarship (2018–2023 consecutively)</li>
+                <li>Thesis: Research on Path Design of Parks Based on Slime Mold Behaviour Simulation and Optimisation (Supervisor: A.P. Jieqing Xu)</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Sept. 2018 – Jun. 2023</div>
+          </div>
+        </div>
+
+        <!-- Research Experience ────────────────────────────────── -->
+        <div class="cv-section" id="research">
+          <div class="cv-section-title">Research Experience</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>TU Munich Smart City Lab</h3>
+              <h4>PhD Researcher — Multimodal Spatio-Temporal Data Mining</h4>
+              <ul class="cv-bullets">
+                <li>Working on deep learning architectures for urban multimodal fusion (street-view, text, sensor data)</li>
+                <li>Co-authored paper submitted to ACM SIGSPATIAL '26</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Apr. 2026 – Present</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>RWTH Aachen University</h3>
+              <h4>Master Thesis Researcher — Urban Heat Inequality &amp; Interpretable ML</h4>
+              <ul class="cv-bullets">
+                <li>Built 500-m spatial dataset combining satellite UHI, NDVI, urban morphology, and socio-demographic data</li>
+                <li>Applied ensemble AutoML, SHAP, scenario simulation, Bayesian multi-objective optimisation</li>
+                <li>Published journal article in <em>Buildings</em> (IF 3.2, JCR Q2) and two conference papers</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Sept. 2025 – Feb. 2026</div>
+          </div>
+        </div>
+
+        <!-- Publications ──────────────────────────────────────── -->
+        <div class="cv-section" id="publications">
+          <div class="cv-section-title">Publications</div>
+
+          <div style="margin-bottom: 1rem;" class="fade-in">
+            <div style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--orange); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;">Under Review</div>
+            <p style="font-size: 0.875rem; color: var(--text); line-height: 1.6;">
+              Aizinov M., <strong>Ling W.</strong>, Kniazev E., Liu C., Li Z. (2026). <em>Atmosphere-Aware Place Discovery: Semantic Urban Mapping with Multimodal Vibe Enrichment.</em> ACM SIGSPATIAL '26.
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;" class="fade-in">
+            <div style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;">Journal Article</div>
+            <p style="font-size: 0.875rem; color: var(--text); line-height: 1.6;">
+              <strong>Ling W.*</strong>, Chu L. (2025). <em>Adaptive Urban Heat Mitigation Through Ensemble Learning: Socio-Spatial Modeling and Intervention Analysis.</em> <em>Buildings</em>, 15(21), 3820. <a href="https://doi.org/10.3390/buildings15213820" target="_blank">https://doi.org/10.3390/buildings15213820</a> (IF 3.2; JCR Q2)
+            </p>
+          </div>
+
+          <div style="margin-bottom: 1rem;" class="fade-in">
+            <div style="font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-mono); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem;">Conference Papers</div>
+            <ul class="cv-bullets">
+              <li><strong>Ling W.</strong> (2025). <em>Urban Climate Justice through Interpretable Ensemble Learning: Heat Exposure Inequities and Planning Strategies in Metro Vancouver.</em> 61st ISOCARP World Planning Congress, Riyadh. <a href="https://doi.org/10.47472/VTngcBRh" target="_blank">DOI</a></li>
+              <li><strong>Ling W.</strong> (2025). <em>Data-Driven Circularity: Visualizing Urban Heat Inequity for Just Green Transitions.</em> Urban Futures Symposium 2025, Dübendorf.</li>
+              <li><strong>Ling W.</strong> (2025). <em>Ensemble Learning Approaches for Adaptive Urban Heat Mitigation: A Socio-Spatial Analysis.</em> GSCS &amp; ICUI 2025, Hong Kong.</li>
+              <li><strong>Ling W.</strong>, Huang Y. (2024). <em>Flut der Zeit: Aufbau einer lebendigen Nachbarschaft für verschiedene Altersgruppen.</em> Städtebau Workflow: Kupferstadt Stolberg, RWTH Aachen University, pp. 36–39.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects ──────────────────────────────────────────── -->
+        <div class="cv-section" id="projects">
+          <div class="cv-section-title">Research Projects</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Urban Heat Inequality — Master Thesis</h3>
+              <h4>RWTH Aachen University · Faculty of Architecture</h4>
+              <ul class="cv-bullets">
+                <li>Supervisors: Prof. Dr. Jakob Beetz, Prof. Verónica Garcia Donoso</li>
+                <li>Socio-spatial inequalities in UHI exposure; ensemble AutoML + Bayesian optimisation</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Sept. 2025 – Feb. 2026</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Pedal to a Greener Future — Bike Infrastructure</h3>
+              <h4>RWTH Aachen University · Supervisor: Prof. Christa Reicher</h4>
+              <ul class="cv-bullets">
+                <li>GIS route optimisation, stakeholder workshops, phased implementation strategy for Zuid-Limburg</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Apr. – Jul. 2024</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Waterwise Urbanism — Maas Basin</h3>
+              <h4>RWTH Aachen University · Supervisor: Prof. Verónica Garcia Donoso</h4>
+              <ul class="cv-bullets">
+                <li>Nature-based flood solutions; work selected for RWTH Städtebau Workflow publication</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Apr. – Jul. 2024</div>
+          </div>
+        </div>
+
+        <!-- Internships ───────────────────────────────────────── -->
+        <div class="cv-section" id="internships">
+          <div class="cv-section-title">Internship Experience</div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Assistant of Community Planning</h3>
+              <h4>Hefei Natural Resources and Planning Information Center</h4>
+              <ul class="cv-bullets">
+                <li>Longqiao Town, Lujiang County: GIS analysis, stakeholder interviews, land use assessment</li>
+                <li>Designed a historical village museum; delivered project drawings</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Aug. – Dec. 2022</div>
+          </div>
+
+          <div class="cv-entry">
+            <div class="cv-entry-main">
+              <h3>Assistant of Residential Plan</h3>
+              <h4>Hefei Planning and Design Institute</h4>
+              <ul class="cv-bullets">
+                <li>Luyang District: spatial-environmental analysis, passive design for ventilation &amp; solar access</li>
+                <li>Produced detailed drawings and renderings</li>
+              </ul>
+            </div>
+            <div class="cv-entry-date">Jun. – Aug. 2022</div>
+          </div>
+        </div>
+
+        <!-- Skills ────────────────────────────────────────────── -->
+        <div class="cv-section" id="skills">
+          <div class="cv-section-title">Technical Skills</div>
+
+          <div class="cv-skills-grid">
+            <div class="cv-skill-cat">Languages</div>
+            <div class="cv-skill-val">English (proficient) · German (proficient) · Mandarin (native)</div>
+
+            <div class="cv-skill-cat">Programming</div>
+            <div class="cv-skill-val">Python (proficient) · R · SQL</div>
+
+            <div class="cv-skill-cat">ML / DL</div>
+            <div class="cv-skill-val">PyTorch · scikit-learn · AutoML · SHAP · Time Series Analysis</div>
+
+            <div class="cv-skill-cat">Geospatial</div>
+            <div class="cv-skill-val">QGIS · ArcGIS · GeoPandas · Remote Sensing · Satellite Image Analysis · Street View Processing</div>
+
+            <div class="cv-skill-cat">Design</div>
+            <div class="cv-skill-val">Rhino · Grasshopper (Parametric Design) · AutoCAD · SketchUp</div>
+          </div>
+        </div>
+
+        <!-- Awards ────────────────────────────────────────────── -->
+        <div class="cv-section" id="awards">
+          <div class="cv-section-title">Honors &amp; Awards</div>
+
+          <div class="cv-skills-grid">
+            <div class="cv-skill-cat">Feb–Apr 2026</div>
+            <div class="cv-skill-val">STIBET I Graduation Scholarship · RWTH Aachen University</div>
+
+            <div class="cv-skill-cat">2023</div>
+            <div class="cv-skill-val">Outstanding Graduate Scholarship · Anhui Jianzhu University</div>
+
+            <div class="cv-skill-cat">2018–2023</div>
+            <div class="cv-skill-val">Third-Class Scholarship · Anhui Jianzhu University (consecutive)</div>
+          </div>
+        </div>
+
+      </div><!-- /cv-content -->
+    </div><!-- /cv-layout -->
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2026 Wanyun Ling · TU Munich</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="mailto:wanyun.ling@tum.de">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

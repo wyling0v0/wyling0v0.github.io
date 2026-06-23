@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Projects — Wanyun Ling</title>
+  <meta name="description" content="Research projects by Wanyun Ling — GeoAI, Urban Heat Island Foundation Model, multimodal urban AI, interpretable ML." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+
+    /* ── Sticky project nav ─────────────────────────────────────── */
+    .proj-nav-bar {
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 50;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: .5rem 0;
+    }
+    .proj-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+      align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding-bottom: .5rem;
+    }
+    .proj-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: .28rem .8rem;
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      color: #64748b;
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .proj-pill:hover { border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim); }
+    .proj-pill.active { background:var(--cyan);border-color:var(--cyan);color:#fff; }
+
+    /* ── Project block ──────────────────────────────────────────── */
+    .proj-block {
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 3.5rem;
+    }
+
+    /* Eyebrow row */
+    .proj-eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .65rem;
+    }
+    .proj-num {
+      font-family: var(--font-mono);
+      font-size: .58rem;
+      letter-spacing: .25em;
+      color: var(--text-dim);
+    }
+
+    /* Title */
+    .proj-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: .35rem;
+    }
+    .proj-subtitle {
+      font-size: .92rem;
+      color: var(--text-sub);
+      max-width: 720px;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    /* ── Visual section: gallery + optional video ───────────────── */
+    .proj-visual {
+      display: grid;
+      grid-template-columns: 1fr;        /* no-video default */
+      gap: 1rem;
+      margin: 1.5rem 0;
+      align-items: start;
+    }
+    .proj-visual.has-video {
+      grid-template-columns: 3fr 2fr;
+    }
+
+    /* Gallery */
+    .gallery-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .gallery-progress {
+      height: 2px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-progress-bar {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      background: var(--cyan);
+      width: 0;
+      transition: width linear;
+    }
+    .gallery-viewport {
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+    }
+    .gallery-track {
+      display: flex;
+      height: 100%;
+      transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+      will-change: transform;
+    }
+    .gallery-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.25rem .4rem;
+    }
+    .gallery-slide img {
+      max-width: 100%;
+      max-height: calc(100% - 32px);
+      object-fit: contain;
+      border-radius: 2px;
+      display: block;
+    }
+    .gallery-caption {
+      font-family: var(--font-mono);
+      font-size: .58rem;
+      letter-spacing: .05em;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: .45rem;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 .5rem;
+      line-height: 1.4;
+    }
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .5rem .85rem;
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+    }
+    .gallery-btn {
+      background: var(--bg);
+      border: 1px solid var(--border2);
+      color: var(--text-sub);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: .75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s;
+      line-height: 1;
+    }
+    .gallery-btn:hover { background:var(--cyan);border-color:var(--cyan);color:#fff; }
+    .gallery-dots { display:flex;gap:4px;align-items:center; }
+    .gallery-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--border2);
+      cursor: pointer;
+      border: none; padding: 0;
+      transition: all .2s;
+    }
+    .gallery-dot.active { background:var(--cyan);width:14px;border-radius:3px; }
+    .gallery-counter {
+      font-family: var(--font-mono);
+      font-size: .58rem;
+      color: var(--text-dim);
+      min-width: 30px;
+      text-align: right;
+    }
+
+    /* Video */
+    .video-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .video-label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .38rem .75rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: .56rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .video-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 6px rgba(239,68,68,.5);
+      animation: pulse 2s infinite;
+    }
+    .video-wrap video {
+      width: 100%;
+      display: block;
+      max-height: 420px;
+      object-fit: contain;
+      background: #000;
+    }
+
+    /* ── Info section below visual ──────────────────────────────── */
+    .proj-info {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-label {
+      font-family: var(--font-mono);
+      font-size: .56rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: .6rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .detail-label::after { content:'';flex:1;height:1px;background:var(--border); }
+
+    .detail-section { margin-bottom: 1.5rem; }
+
+    .proj-abstract {
+      font-size: .845rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+
+    .contrib-list { list-style:none;padding:0; }
+    .contrib-list li {
+      font-size: .82rem;
+      color: var(--text-sub);
+      padding: .2rem 0 .2rem 1.1rem;
+      position: relative;
+      line-height: 1.55;
+      border-bottom: 1px solid var(--border);
+    }
+    .contrib-list li:last-child { border-bottom: none; }
+    .contrib-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: .55rem;
+      top: .38rem;
+    }
+
+    .proj-links-row { display:flex;flex-wrap:wrap;gap:.4rem; }
+    .proj-link-btn {
+      font-family: var(--font-mono);
+      font-size: .62rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .38rem .85rem;
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      color: var(--text-sub);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+    }
+    .proj-link-btn:hover { border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim); }
+    .proj-link-btn--primary { background:var(--cyan);border-color:var(--cyan);color:#fff; }
+    .proj-link-btn--primary:hover { background:transparent;color:var(--cyan); }
+
+    .collab-note {
+      font-size: .78rem;
+      color: var(--text-dim);
+      border-left: 2px solid var(--border2);
+      padding-left: .75rem;
+      line-height: 1.65;
+      margin-top: 1.25rem;
+    }
+
+    /* ── Earlier projects grid ──────────────────────────────────── */
+    .older-section {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .proj-visual.has-video { grid-template-columns: 1fr; }
+      .proj-info { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .proj-nav-inner { padding: 0 1rem; padding-bottom: .45rem; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ── Navigation ───────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="nav-dot"></span>
+    Wanyun Ling
+    <span>/ PhD Researcher</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="index.html#publications">Publications</a></li>
+    <li><a href="cv.html">CV</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<main>
+
+<!-- ── Page Header ─────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container" style="position:relative;z-index:1;padding-top:2rem;">
+    <div class="section-label">Research</div>
+    <h1 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem);">Projects</h1>
+    <div class="section-divider"></div>
+    <p class="section-sub">
+      Five research threads bridging AI, urban science, and data-driven climate action.
+    </p>
+  </div>
+</div>
+
+<!-- ── Sticky nav ────────────────────────────────────────────── -->
+<div class="proj-nav-bar" id="proj-nav">
+  <div class="proj-nav-inner">
+    <a href="#sigspatial" class="proj-pill">01 · Place Discovery</a>
+    <a href="#uhifm"      class="proj-pill">02 · UHIFM Roadmap</a>
+    <a href="#thesis"     class="proj-pill">03 · Master Thesis</a>
+    <a href="#buildings"  class="proj-pill">04 · AutoML for UHI Mitigation</a>
+    <a href="#isocarp"    class="proj-pill">05 · Climate Justice</a>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     01 · Atmosphere-Aware Place Discovery
+     ══════════════════════════════════════════════════════════ -->
+<section class="proj-block" id="sigspatial">
+<div class="container">
+
+  <div class="proj-eyebrow">
+    <span class="proj-num">01 / 05</span>
+    <span class="pub-status pub-status--review">Under Review · ACM SIGSPATIAL '26</span>
+    <span class="pub-status pub-status--conference" style="background:rgba(79,70,229,.08);color:var(--cyan);border-color:rgba(79,70,229,.2);">TU Munich · 2026</span>
+  </div>
+  <h2 class="proj-title">Atmosphere-Aware Place Discovery</h2>
+  <p class="proj-subtitle">
+    Semantic urban mapping with multimodal vibe enrichment — fusing street-view imagery,
+    POI text, and spatial signals to assign atmosphere descriptors beyond category labels.
+  </p>
+
+  <!-- Visual: no video → single column gallery -->
+  <div class="proj-visual">
+    <div class="gallery-wrap js-gallery">
+      <div class="gallery-progress"><div class="gallery-progress-bar"></div></div>
+      <div class="gallery-viewport">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="project/Sigspatial_2026/Images/figure2.png" alt="System Architecture" loading="eager" />
+            <div class="gallery-caption">System Architecture — Offline Indexing, Two-Level Clustering &amp; Online Serving</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/Sigspatial_2026/Images/sum_main_map.png" alt="Vibe Map" loading="lazy" />
+            <div class="gallery-caption">City-Scale Urban Vibe Map</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/Sigspatial_2026/Images/sum_creative_vibe.png" alt="Creative Vibe" loading="lazy" />
+            <div class="gallery-caption">Semantic Vibe Cluster: Creative Urban Atmosphere</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn gallery-prev">&#8592;</button>
+        <div class="gallery-dots"></div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="gallery-counter">1 / 3</span>
+          <button class="gallery-btn gallery-next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="proj-info">
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Overview</div>
+        <p class="proj-abstract">
+          A multimodal deep learning framework for discovering semantically coherent urban places
+          by fusing street-view imagery, POI text, and spatial signals. The model assigns
+          <em>vibe</em> descriptors to urban areas, enabling atmosphere-level urban mapping
+          beyond traditional category-based classification.
+        </p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Key Contributions</div>
+        <ul class="contrib-list">
+          <li>Multimodal contrastive fusion of vision encoders with language models for urban representation</li>
+          <li>Two-level semantic clustering (micro → macro) for scalable place discovery</li>
+          <li>Atmosphere-aware mapping capturing vibe beyond POI categories</li>
+          <li>UMAP embedding visualization of urban semantic space</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Keywords</div>
+        <div class="card-tags">
+          <span class="tag">Semantic urban mapping</span><span class="tag">POI retrieval</span>
+          <span class="tag">Vibe-aware search</span><span class="tag">Vision-language models</span>
+          <span class="tag">Contrastive spatial learning</span><span class="tag">Discovery plane</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Links</div>
+        <div class="proj-links-row">
+          <a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing"
+             class="proj-link-btn proj-link-btn--primary" target="_blank">↗ Paper Draft</a>
+        </div>
+      </div>
+      <div class="collab-note">
+        Mikhail Aizinov, <strong>Wanyun Ling</strong>, Evgenii Kniazev, <strong>Chenxi Liu</strong>, <strong>Ziyue Li</strong> —
+        TU Munich Smart City Lab, 2026
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     02 · UHI Foundation Model (ECML PKDD PhD Forum)
+     ══════════════════════════════════════════════════════════ -->
+<section class="proj-block" id="uhifm">
+<div class="container">
+
+  <div class="proj-eyebrow">
+    <span class="proj-num">02 / 05</span>
+    <span class="pub-status pub-status--conference">ECML PKDD '26 PhD Forum · Submitted</span>
+    <span class="pub-status pub-status--published" style="background:rgba(79,70,229,.06);color:var(--cyan);border-color:rgba(79,70,229,.15);">TU Munich · 2026</span>
+  </div>
+  <h2 class="proj-title">Urban Heat Island Foundation Model</h2>
+  <p class="proj-subtitle">
+    Towards an interpretable spatio-temporal foundation model for UHI forecasting,
+    causal attribution, and climate adaptation — jointly modelling LST-UHI and AT-UHI across cities.
+  </p>
+
+  <!-- Visual: no video -->
+  <div class="proj-visual">
+    <div class="gallery-wrap js-gallery">
+      <div class="gallery-progress"><div class="gallery-progress-bar"></div></div>
+      <div class="gallery-viewport">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="project/ecmlpkdd/draft_1/UHIFMroadmap.png" alt="UHIFM Roadmap" loading="eager" />
+            <div class="gallery-caption">UHIFM Research Roadmap — Three-Phase Development Plan</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn gallery-prev">&#8592;</button>
+        <div class="gallery-dots"></div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="gallery-counter">1 / 1</span>
+          <button class="gallery-btn gallery-next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="proj-info">
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Research Vision</div>
+        <p class="proj-abstract">
+          This PhD project investigates whether a unified, physically informed, and interpretable
+          spatio-temporal foundation model can support transferable UHI forecasting and attribution
+          across cities. The model is pre-trained on heterogeneous multi-city UHI datasets and
+          adapted to forecasting, interpolation, attribution, and scenario simulation.
+        </p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Key Research Questions</div>
+        <ul class="contrib-list">
+          <li>How can LST-UHI and AT-UHI be jointly represented in a single model?</li>
+          <li>Which physical inductive biases improve cross-city generalisation?</li>
+          <li>How can uncertainty-aware outputs inform climate adaptation decisions?</li>
+          <li>Can one model bridge forecasting accuracy and causal attribution?</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Keywords</div>
+        <div class="card-tags">
+          <span class="tag">Urban Heat Island</span><span class="tag">Foundation Model</span>
+          <span class="tag">Spatio-temporal Forecasting</span><span class="tag">Interpretable Machine Learning</span>
+          <span class="tag">Urban Climate</span><span class="tag">GeoAI</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Links</div>
+        <div class="proj-links-row">
+          <a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf"
+             class="proj-link-btn proj-link-btn--primary" target="_blank">↗ PhD Forum Abstract</a>
+        </div>
+      </div>
+      <div class="collab-note">
+        Supervised by Prof. Dr. Ziyue Li &amp; Dr. Chenxi Liu —
+        TU Munich / HKISI-CAS, 2026
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     03 · Master Thesis
+     ══════════════════════════════════════════════════════════ -->
+<section class="proj-block" id="thesis">
+<div class="container">
+
+  <div class="proj-eyebrow">
+    <span class="proj-num">03 / 05</span>
+    <span class="pub-status" style="background:rgba(16,185,129,.08);color:#059669;border:1px solid rgba(16,185,129,.2);">Master Thesis · RWTH Aachen</span>
+  </div>
+  <h2 class="proj-title">Urban Heat Inequality and Gentrification Risk Trade-off</h2>
+  <p class="proj-subtitle">
+    AutoML ensemble modeling and scenario simulation for socio-spatial UHI analysis —
+    quantifying how vegetation, water proximity, and built form shape heat exposure inequities across social groups.
+  </p>
+
+  <!-- Visual: gallery only -->
+  <div class="proj-visual">
+    <div class="gallery-wrap js-gallery">
+      <div class="gallery-progress"><div class="gallery-progress-bar"></div></div>
+      <div class="gallery-viewport">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.31.14.png" alt="Motivation Maps" loading="eager" />
+            <div class="gallery-caption">Motivation — UHI and Social Vulnerability Distribution in Zuid-Holland</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/12.png" alt="Socio-demographic Maps" loading="lazy" />
+            <div class="gallery-caption">Socio-demographic Vulnerability Mapping — Zuid-Holland 500 m Grid</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.50.55.png" alt="3D UHI Visualization" loading="lazy" />
+            <div class="gallery-caption">Urban Heat Island 3D Visualization — UHI Summer Daytime with Socio-demographic Data</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/25.png" alt="Scenario Simulation" loading="lazy" />
+            <div class="gallery-caption">Scenario Simulation — Predict UHI Change by Feature Adjustment</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/24.png" alt="Community Engagement" loading="lazy" />
+            <div class="gallery-caption">Community Engagement — Improvement Willingness Input</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/26.png" alt="Data Processing" loading="lazy" />
+            <div class="gallery-caption">Data Processing Pipeline — Multi-source Feature Aggregation</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.32.21.png" alt="Thesis" loading="lazy" />
+            <div class="gallery-caption">Master Thesis — Full Document</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.32.33.png" alt="Research Framework" loading="lazy" />
+            <div class="gallery-caption">Research Framework — AutoML Pipeline &amp; Gentrification Risk Optimization</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.32.46.png" alt="Optimization Outcomes" loading="lazy" />
+            <div class="gallery-caption">Optimization Outcomes — UHI Reduction vs. Gentrification Risk Trade-off</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.33.09.png" alt="Implications" loading="lazy" />
+            <div class="gallery-caption">Policy Implications — Equity, Scale Sensitivity &amp; Governance</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.33.04.png" alt="Key Findings" loading="lazy" />
+            <div class="gallery-caption">Key Findings — Nature-Based Solutions vs. Morphological Strategies</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.30.53.png" alt="Heat Vulnerability" loading="lazy" />
+            <div class="gallery-caption">Motivation — Rising Heat Vulnerability Index Across Europe (1990–2022)</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.31.23.png" alt="Research Gaps" loading="lazy" />
+            <div class="gallery-caption">Research Gaps — Explaining, Testing, and Equity in UHI Mitigation</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.31.34.png" alt="Research Aim" loading="lazy" />
+            <div class="gallery-caption">Research Aim — Interpretable and Adaptive Urban Cooling Framework</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.31.42.png" alt="Research Questions RQ1 RQ2" loading="lazy" />
+            <div class="gallery-caption">Research Questions — UHI Drivers &amp; Intervention Effectiveness</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/masterthesis/截屏2026-06-23%2017.31.57.png" alt="Research Question RQ3" loading="lazy" />
+            <div class="gallery-caption">Research Question — Balancing Cooling Benefits and Gentrification Risk</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn gallery-prev">&#8592;</button>
+        <div class="gallery-dots"></div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="gallery-counter">1 / 16</span>
+          <button class="gallery-btn gallery-next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="proj-info">
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Overview</div>
+        <p class="proj-abstract">
+          Examines socio-spatial inequalities in urban heat exposure across Zuid-Holland and
+          Metro Vancouver, evaluating how UHI mitigation strategies affect cooling performance,
+          social equity, and gentrification risk. Produced two journal papers and two conference presentations.
+        </p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Key Contributions</div>
+        <ul class="contrib-list">
+          <li>500-m grid dataset fusing satellite UHI, NDVI, urban morphology, and socio-demographics</li>
+          <li>AutoGluon ensemble (CatBoost, NN, XT) across 4 seasonal-diurnal UHI scenarios</li>
+          <li>Permutation-based feature importance quantifying vegetation, water proximity, built form</li>
+          <li>0–2× scenario simulation isolating marginal cooling impact per intervention type</li>
+          <li>Equity analysis across income, race, education, citizenship groups — vegetation delivers strongest cooling (up to 2.95 °C)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Keywords</div>
+        <div class="card-tags">
+          <span class="tag">Urban heat island</span><span class="tag">Environmental justice</span>
+          <span class="tag">Ensemble machine learning</span><span class="tag">AutoML</span>
+          <span class="tag">Equity-oriented climate adaptation</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Links</div>
+        <div class="proj-links-row">
+          <a href="https://drive.google.com/file/d/17a1LSMaecbUdi2gFdCR16uPiVSsfZtH5/view?usp=sharing"
+             class="proj-link-btn proj-link-btn--primary" target="_blank">↗ Thesis</a>
+        </div>
+      </div>
+      <div class="collab-note">
+        Prof. Dr. Jakob Beetz · Prof. Verónica Garcia Donoso —
+        RWTH Aachen, Sept 2025 – Feb 2026
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     04 · Buildings Journal Paper
+     ══════════════════════════════════════════════════════════ -->
+<section class="proj-block" id="buildings">
+<div class="container">
+
+  <div class="proj-eyebrow">
+    <span class="proj-num">04 / 05</span>
+    <span class="pub-status pub-status--published">Published · Buildings · IF 3.2 · JCR Q2</span>
+    <span class="pub-status" style="background:rgba(16,185,129,.08);color:#059669;border:1px solid rgba(16,185,129,.2);">First Author · Oct 2025</span>
+  </div>
+  <h2 class="proj-title">Adaptive Urban Heat Mitigation Through Ensemble Learning</h2>
+  <p class="proj-subtitle">
+    AutoML ensemble modeling and scenario simulation for equitable UHI mitigation in Vancouver —
+    quantifying intervention effectiveness and distributional fairness across social vulnerability groups.
+  </p>
+
+  <!-- Visual: gallery with video as first slide -->
+  <div class="proj-visual">
+    <div class="gallery-wrap js-gallery">
+      <div class="gallery-progress"><div class="gallery-progress-bar"></div></div>
+      <div class="gallery-viewport">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <video autoplay muted loop playsinline style="max-width:100%;max-height:calc(100% - 32px);object-fit:contain;border-radius:2px;display:block;">
+              <source src="project/buildings/intro_video_compressed.mp4" type="video/mp4" />
+            </video>
+            <div class="gallery-caption">Research Introduction — Adaptive Urban Heat Mitigation</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image1.png" alt="Framework" loading="lazy" />
+            <div class="gallery-caption">Research Framework — Model Training, Simulation &amp; Optimisation</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image33.png" alt="Heatmaps" loading="lazy" />
+            <div class="gallery-caption">Group-Level UHI Difference by Intervention Strategy</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image28.png" alt="Fig 28" loading="lazy" />
+            <div class="gallery-caption">Daytime UHI SHAP Feature Importance</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image29.png" alt="Fig 29" loading="lazy" />
+            <div class="gallery-caption">Nighttime UHI SHAP Feature Importance</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image30.png" alt="Fig 30" loading="lazy" />
+            <div class="gallery-caption">Vulnerability Stratification and Social Equity Analysis</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image32.png" alt="Fig 32" loading="lazy" />
+            <div class="gallery-caption">Gentrification Risk vs. Cooling Effectiveness Trade-off</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn gallery-prev">&#8592;</button>
+        <div class="gallery-dots"></div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="gallery-counter">1 / 7</span>
+          <button class="gallery-btn gallery-next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="proj-info">
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Overview</div>
+        <p class="proj-abstract">
+          AutoGluon ensemble AutoML predicts UHI intensity across four seasonal-diurnal scenarios
+          for 1,660 Dissemination Areas in Vancouver. Permutation-based feature importance reveals
+          the dominant cooling role of vegetation and water proximity. Scenario simulation (0–2×
+          feature scaling) quantifies the marginal cooling of each intervention and evaluates
+          distributional equity across socially vulnerable population groups.
+        </p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Key Contributions</div>
+        <ul class="contrib-list">
+          <li>AutoGluon ensemble (CatBoost, NN-Torch, XT) with bagging and multi-layer stacking — R² up to 0.79</li>
+          <li>Permutation-based feature importance across 4 seasonal-diurnal UHI scenarios</li>
+          <li>0–2× feature scaling simulation isolating marginal cooling contribution per intervention</li>
+          <li>Vegetation cover delivers strongest cooling (up to 2.95 °C) and consistently advances equity</li>
+          <li>Built-form reductions (BCR, road density) improve distributional justice with limited thermal compromise</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Keywords</div>
+        <div class="card-tags">
+          <span class="tag">Urban heat island (UHI)</span><span class="tag">Environmental justice</span>
+          <span class="tag">Ensemble machine learning</span><span class="tag">AutoML</span>
+          <span class="tag">Equity-oriented climate adaptation</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Links</div>
+        <div class="proj-links-row">
+          <a href="https://doi.org/10.3390/buildings15213820"
+             class="proj-link-btn proj-link-btn--primary" target="_blank">↗ Published Paper (DOI)</a>
+        </div>
+      </div>
+      <div class="collab-note">
+        <strong>Wanyun Ling</strong>*, Liyang Chu —
+        Buildings, 15(21), 3820 · October 2025
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     05 · Urban Climate Justice (ISOCARP)
+     ══════════════════════════════════════════════════════════ -->
+<section class="proj-block" id="isocarp">
+<div class="container">
+
+  <div class="proj-eyebrow">
+    <span class="proj-num">05 / 05</span>
+    <span class="pub-status pub-status--published">Published · DOI</span>
+    <span class="pub-status pub-status--conference">61st ISOCARP Congress · Riyadh</span>
+  </div>
+  <h2 class="proj-title">Multimodal Urban Heat Sensing: AutoML + Geotagged Social Media</h2>
+  <p class="proj-subtitle">
+    Fusing satellite-derived UHI modeling with geotagged Twitter/X VADER sentiment analysis —
+    bridging objective thermal exposure and subjective heat perception to surface climate justice inequities in Metro Vancouver.
+  </p>
+
+  <!-- Visual: gallery with video as first slide -->
+  <div class="proj-visual">
+    <div class="gallery-wrap js-gallery">
+      <div class="gallery-progress"><div class="gallery-progress-bar"></div></div>
+      <div class="gallery-viewport">
+        <div class="gallery-track">
+          <div class="gallery-slide">
+            <video autoplay muted loop playsinline style="max-width:100%;max-height:calc(100% - 32px);object-fit:contain;border-radius:2px;display:block;">
+              <source src="project/ISOCARP/isocarp_compressed.mp4" type="video/mp4" />
+            </video>
+            <div class="gallery-caption">Congress Presentation — 61st ISOCARP World Planning Congress, Riyadh</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/ISOCARP/images/image1.png" alt="Study Area" loading="lazy" />
+            <div class="gallery-caption">Metro Vancouver — Study Area and UHI Spatial Patterns</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/ISOCARP/images/image2.png" alt="Vulnerability" loading="lazy" />
+            <div class="gallery-caption">Heat Exposure and Socio-Demographic Vulnerability Mapping</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/ISOCARP/images/image3.png" alt="Feature Importance" loading="lazy" />
+            <div class="gallery-caption">Ensemble Model — Feature Importance Analysis</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/ISOCARP/images/image4.png" alt="Scenarios" loading="lazy" />
+            <div class="gallery-caption">Intervention Scenario Comparison</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/ISOCARP/images/image5.png" alt="Equity" loading="lazy" />
+            <div class="gallery-caption">Climate Justice — Equity-Efficiency Trade-off Analysis</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="project/ISOCARP/images/image6.png" alt="Policy" loading="lazy" />
+            <div class="gallery-caption">Policy Recommendations for Equitable Heat Mitigation</div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn gallery-prev">&#8592;</button>
+        <div class="gallery-dots"></div>
+        <div style="display:flex;align-items:center;gap:.5rem;">
+          <span class="gallery-counter">1 / 7</span>
+          <button class="gallery-btn gallery-next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="proj-info">
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Overview</div>
+        <p class="proj-abstract">
+          A multimodal framework that fuses two complementary data streams: (1) satellite-derived
+          UHI intensity modeled via AutoGluon ensemble AutoML across four seasonal-diurnal scenarios,
+          and (2) geotagged Twitter/X posts processed through VADER sentiment analysis to construct
+          a spatially referenced Perceived Heat Score. Overlaying both layers across 1,660
+          Dissemination Areas in Metro Vancouver surfaces perception–exposure mismatches —
+          communities with high modeled UHI but low social media signal, potentially the most
+          underserved in climate intervention — and links differential heat burden to race,
+          income, education, and citizenship dimensions of climate justice.
+        </p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Key Contributions</div>
+        <ul class="contrib-list">
+          <li><strong>Multimodal fusion</strong>: satellite UHI (AutoGluon AutoML) × geotagged Twitter/X (VADER sentiment) — two independent heat signals spatially co-registered at DA level</li>
+          <li>Perceived Heat Score constructed from filtered heat-keyword tweets, scored for sentiment intensity and mapped via KDE</li>
+          <li>Perception–exposure mismatch analysis: high UHI / low tweet signal identifies silenced communities at disproportionate risk</li>
+          <li>AutoGluon ensemble across 4 seasonal-diurnal scenarios, R² up to 0.79; permutation importance reveals vegetation and water proximity as dominant cooling factors</li>
+          <li>Climate justice: racialized, low-income, non-citizen, and low-education communities show systematically higher UHI exposure across all scenarios</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Keywords</div>
+        <div class="card-tags">
+          <span class="tag">Urban Heat Island (UHI)</span><span class="tag">Environmental justice</span>
+          <span class="tag">Ensemble machine learning</span><span class="tag">AutoML</span>
+          <span class="tag">Multimodal urban sensing</span><span class="tag">Geotagged social media</span>
+          <span class="tag">Equity-oriented climate adaptation</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Links</div>
+        <div class="proj-links-row">
+          <a href="https://doi.org/10.47472/VTngcBRh"
+             class="proj-link-btn proj-link-btn--primary" target="_blank">↗ Published Paper</a>
+        </div>
+      </div>
+      <div class="collab-note">
+        Wanyun Ling (sole author) —
+        61st ISOCARP World Planning Congress · December 2025
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+
+<!-- ── Earlier Projects ──────────────────────────────────────── -->
+<section class="older-section">
+  <div class="container">
+    <div class="section-label" style="margin-bottom:1rem;">Earlier &amp; Professional Projects</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;">
+
+      <div class="card fade-in">
+        <div class="card-type">Sustainable Mobility · Apr–Jul 2024</div>
+        <h3>Zuid-Limburg Bike-Friendly Infrastructure</h3>
+        <p>GIS route optimisation, stakeholder workshops, and transition management for sustainable bicycle infrastructure.</p>
+        <div class="card-tags"><span class="tag">GIS</span><span class="tag">Route Optimisation</span><span class="tag">Transition Management</span></div>
+        <div style="margin-top:.75rem;font-size:.78rem;color:var(--text-dim);">RWTH Aachen · Prof. Christa Reicher</div>
+        <div class="proj-links-row" style="margin-top:.75rem;">
+          <a href="https://drive.google.com/file/d/1V__inD2cJWvqoZcBOptbYvsWR0p_VAtW/view?usp=sharing" class="proj-link-btn" target="_blank">Report</a>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-type">Climate Resilience · Apr–Jul 2024</div>
+        <h3>Waterwise Urbanism: Maas Basin</h3>
+        <p>Multi-scalar flood resilience strategies using nature-based solutions. Published in RWTH Städtebau Workflow.</p>
+        <div class="card-tags"><span class="tag">Hydrological Modelling</span><span class="tag">Nature-Based Solutions</span></div>
+        <div style="margin-top:.75rem;font-size:.78rem;color:var(--text-dim);">RWTH Aachen · Prof. Verónica Garcia Donoso</div>
+        <div class="proj-links-row" style="margin-top:.75rem;">
+          <a href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" class="proj-link-btn" target="_blank">Published</a>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-type">Community Planning · Aug–Dec 2022</div>
+        <h3>Longqiao Town Community Planning</h3>
+        <p>GIS analysis, stakeholder interviews, and heritage museum design in Anhui Province.</p>
+        <div class="card-tags"><span class="tag">GIS</span><span class="tag">Community Planning</span></div>
+        <div style="margin-top:.75rem;font-size:.78rem;color:var(--text-dim);">Hefei Natural Resources &amp; Planning Center</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-copy">© 2026 Wanyun Ling · TU Munich</div>
+        <div class="coord-display" style="margin-top:.3rem;"></div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="cv.html">CV</a>
+        <a href="mailto:wanyun.ling@tum.de">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="js/main.js"></script>
+<script>
+/* ── Gallery Engine ─────────────────────────────────────────── */
+document.querySelectorAll('.js-gallery').forEach(gallery => {
+  const track       = gallery.querySelector('.gallery-track');
+  const slides      = gallery.querySelectorAll('.gallery-slide');
+  const prevBtn     = gallery.querySelector('.gallery-prev');
+  const nextBtn     = gallery.querySelector('.gallery-next');
+  const dotsWrap    = gallery.querySelector('.gallery-dots');
+  const counter     = gallery.querySelector('.gallery-counter');
+  const progressBar = gallery.querySelector('.gallery-progress-bar');
+  const total       = slides.length;
+  let current       = 0;
+  let autoTimer     = null;
+  const INTERVAL    = 4500;
+
+  slides.forEach((_,i) => {
+    const d = document.createElement('button');
+    d.className = 'gallery-dot' + (i===0?' active':'');
+    d.setAttribute('aria-label', `Slide ${i+1}`);
+    d.addEventListener('click', () => { goTo(i); resetAuto(); });
+    dotsWrap.appendChild(d);
+  });
+
+  function updateVideos() {
+    slides.forEach((slide, i) => {
+      const vid = slide.querySelector('video');
+      if (!vid) return;
+      if (i === current) { vid.play().catch(()=>{}); }
+      else { vid.pause(); }
+    });
+  }
+
+  function update() {
+    track.style.transform = `translateX(-${current*100}%)`;
+    dotsWrap.querySelectorAll('.gallery-dot').forEach((d,i) =>
+      d.classList.toggle('active', i===current));
+    counter.textContent = `${current+1} / ${total}`;
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    requestAnimationFrame(() => {
+      progressBar.style.transition = `width ${INTERVAL}ms linear`;
+      progressBar.style.width = '100%';
+    });
+    updateVideos();
+  }
+
+  function goTo(n){ current=((n%total)+total)%total; update(); }
+  function resetAuto(){ clearInterval(autoTimer); autoTimer=setInterval(()=>goTo(current+1),INTERVAL); }
+
+  prevBtn.addEventListener('click', ()=>{ goTo(current-1); resetAuto(); });
+  nextBtn.addEventListener('click', ()=>{ goTo(current+1); resetAuto(); });
+
+  let tx=0;
+  gallery.addEventListener('touchstart', e=>{tx=e.touches[0].clientX;},{passive:true});
+  gallery.addEventListener('touchend',   e=>{
+    const d=tx-e.changedTouches[0].clientX;
+    if(Math.abs(d)>40){goTo(current+(d>0?1:-1));resetAuto();}
+  },{passive:true});
+
+  gallery.setAttribute('tabindex','0');
+  gallery.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'){goTo(current-1);resetAuto();}
+    if(e.key==='ArrowRight'){goTo(current+1);resetAuto();}
+  });
+
+  gallery.addEventListener('mouseenter', ()=>clearInterval(autoTimer));
+  gallery.addEventListener('mouseleave', ()=>resetAuto());
+
+  update();
+  autoTimer = setInterval(()=>goTo(current+1), INTERVAL);
+});
+
+/* ── Sticky pill highlight ──────────────────────────────────── */
+(function(){
+  const ids  = ['sigspatial','uhifm','thesis','buildings','isocarp'];
+  const pills = document.querySelectorAll('.proj-pill');
+  const navH  = 60 + 40;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        pills.forEach(p=>p.classList.remove('active'));
+        const t = document.querySelector(`.proj-pill[href="#${e.target.id}"]`);
+        if(t) t.classList.add('active');
+      }
+    });
+  }, { rootMargin: `-${navH}px 0px -55% 0px` });
+  ids.forEach(id=>{ const el=document.getElementById(id); if(el)io.observe(el); });
+})();
+
+/* ── Smooth scroll pills ────────────────────────────────────── */
+document.querySelectorAll('.proj-pill').forEach(pill => {
+  pill.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(pill.getAttribute('href'));
+    if(t) window.scrollTo({top: t.getBoundingClientRect().top+window.scrollY-102, behavior:'smooth'});
+  });
+});
+</script>
+
+</body>
+</html>
