@@ -8,6 +8,39 @@
   <link rel="stylesheet" href="css/style.css" />
   <style>
 
+    /* UHI-Bench figures retain their original aspect ratios. */
+    .benchmark-figures {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+    .benchmark-figure {
+      margin: 0;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .benchmark-figure--wide { grid-column: 1 / -1; }
+    .benchmark-figure > a { display: block; cursor: zoom-in; }
+    .benchmark-figure > a:focus-visible { outline: 3px solid var(--cyan); outline-offset: -3px; }
+    .benchmark-figure img { display: block; width: 100%; height: auto; }
+    .benchmark-figure figcaption {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-sub);
+      font-size: .82rem;
+      line-height: 1.65;
+    }
+    .benchmark-figure figcaption strong { display: block; color: var(--text); margin-bottom: .25rem; }
+    .benchmark-figure-link { display: inline-block; margin-top: .5rem; font-size: .75rem; }
+    @media (max-width: 700px) {
+      .benchmark-figures { grid-template-columns: minmax(0, 1fr); }
+    }
+
     /* ── Sticky project nav ─────────────────────────────────────── */
     .proj-nav-bar {
       position: sticky;
@@ -355,7 +388,7 @@
     <h1 class="section-title" style="font-size:clamp(2rem,5vw,3.5rem);">Projects</h1>
     <div class="section-divider"></div>
     <p class="section-sub">
-      Five research threads bridging AI, urban science, and data-driven climate action.
+      Six research projects bridging AI, urban science, and data-driven climate action.
     </p>
   </div>
 </div>
@@ -363,23 +396,142 @@
 <!-- ── Sticky nav ────────────────────────────────────────────── -->
 <div class="proj-nav-bar" id="proj-nav">
   <div class="proj-nav-inner">
-    <a href="#sigspatial" class="proj-pill">01 · Place Discovery</a>
-    <a href="#uhifm"      class="proj-pill">02 · UHIFM Roadmap</a>
-    <a href="#thesis"     class="proj-pill">03 · Master Thesis</a>
-    <a href="#buildings"  class="proj-pill">04 · AutoML for UHI Mitigation</a>
-    <a href="#isocarp"    class="proj-pill">05 · Climate Justice</a>
+    <a href="#uhi-bench" class="proj-pill">01 · UHI-Bench</a>
+    <a href="#sigspatial" class="proj-pill">02 · Place Discovery</a>
+    <a href="#uhifm"      class="proj-pill">03 · UHIFM Roadmap</a>
+    <a href="#thesis"     class="proj-pill">04 · Master Thesis</a>
+    <a href="#buildings"  class="proj-pill">05 · AutoML for UHI Mitigation</a>
+    <a href="#isocarp"    class="proj-pill">06 · Climate Justice</a>
   </div>
 </div>
 
 
+<!-- UHI-Bench -->
+<section class="proj-block" id="uhi-bench">
+<div class="container">
+  <div class="proj-eyebrow">
+    <span class="proj-num">01 / 06</span>
+    <span class="pub-status pub-status--conference">Accepted (Poster) · KDD 2027</span>
+  </div>
+  <h2 class="proj-title">UHI-Bench</h2>
+  <p class="proj-subtitle">Benchmarking Dual-Source Urban Heat Island Modeling Across Cities in Diverse Climate Regimes</p>
+  <div class="proj-info">
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Overview</div>
+        <p class="proj-abstract">UHI-Bench brings land surface temperature UHI (LST-UHI) and near-surface air temperature UHI (AirT-UHI) into a shared benchmark with meteorological and urban morphology data. Its signal, mechanism, and transfer framework examines how the two heat signals differ, how environmental context supports modeling, and how models generalize across cities and climate regimes.</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Authors</div>
+        <p class="proj-abstract"><strong>Wanyun Ling</strong>, Chenxi Liu, Yi Xie, Aopu Xu, Zhuoqi Zeng, Ziyue Li</p>
+      </div>
+    </div>
+    <div>
+      <div class="detail-section">
+        <div class="detail-label">Venue</div>
+        <p class="proj-abstract">KDD 2027 · Datasets and Benchmarks Track<br>Accepted (Poster)</p>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Links</div>
+        <div class="proj-links-row">
+          <a href="https://arxiv.org/abs/2608.23857" class="proj-link-btn" target="_blank" rel="noopener noreferrer">↗ arXiv</a>
+          <a href="https://arxiv.org/pdf/2608.23857" class="proj-link-btn proj-link-btn--primary" target="_blank" rel="noopener noreferrer">↗ Download PDF</a>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Keywords</div>
+        <div class="card-tags">
+          <span class="tag">Urban Heat Island</span><span class="tag">Benchmark</span>
+          <span class="tag">Dual-Source Modeling</span><span class="tag">Cross-City Modeling</span>
+          <span class="tag">Climate Regimes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="benchmark-figures" aria-label="UHI-Bench research figures">
+    <figure class="benchmark-figure benchmark-figure--wide">
+      <a href="project/uhi-bench/benchmark-overview.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Benchmark framework: signal, mechanism, and transfer">
+        <img src="project/uhi-bench/benchmark-overview.png" alt="Benchmark framework: signal, mechanism, and transfer. The research framework connects dual-source signal analysis, meteorology and urban morphology, and transfer to unseen cities and climate regimes." width="4992" height="2879" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Benchmark framework: signal, mechanism, and transfer</strong>
+        The research framework connects dual-source signal analysis, meteorology and urban morphology, and transfer to unseen cities and climate regimes.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/benchmark-overview.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a>
+      </figcaption>
+    </figure>
+    <figure class="benchmark-figure benchmark-figure--wide">
+      <a href="project/uhi-bench/cities-and-climate-regimes.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Benchmark cities and climate regimes">
+        <img src="project/uhi-bench/cities-and-climate-regimes.png" alt="Benchmark cities and climate regimes. City coverage on the Köppen–Geiger climate map, with a closer view of the German cities and climate indicators for representative locations." width="4808" height="1677" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Benchmark cities and climate regimes</strong>
+        City coverage on the Köppen–Geiger climate map, with a closer view of the German cities and climate indicators for representative locations.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/cities-and-climate-regimes.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a>
+      </figcaption>
+    </figure>
+    <figure class="benchmark-figure">
+      <a href="project/uhi-bench/dual-source-complementarity.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Dual-source consistency and complementarity">
+        <img src="project/uhi-bench/dual-source-complementarity.png" alt="Dual-source consistency and complementarity. Temporal and spatial associations, best-lag correlations, and the gains from using one UHI source to fill gaps in the other vary across cities." width="3365" height="4182" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Dual-source consistency and complementarity</strong>
+        Temporal and spatial associations, best-lag correlations, and the gains from using one UHI source to fill gaps in the other vary across cities.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/dual-source-complementarity.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a>
+      </figcaption>
+    </figure>
+    <figure class="benchmark-figure">
+      <a href="project/uhi-bench/city-driver-rankings.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Mechanism attribution: leading drivers by city">
+        <img src="project/uhi-bench/city-driver-rankings.png" alt="Mechanism attribution: leading drivers by city. Signed top-three meteorological and urban morphology driver rankings for AirT-UHI and LST-UHI. Direction indicates the high-minus-low response sign; bar lengths are normalized within each target and feature group." width="2164" height="2400" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Mechanism attribution: leading drivers by city</strong>
+        Signed top-three meteorological and urban morphology driver rankings for AirT-UHI and LST-UHI. Direction indicates the high-minus-low response sign; bar lengths are normalized within each target and feature group.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/city-driver-rankings.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a> · <a class="benchmark-figure-link" href="project/uhi-bench/city-driver-rankings.pdf" target="_blank" rel="noopener noreferrer">Original PDF ↗</a>
+      </figcaption>
+    </figure>
+    <figure class="benchmark-figure">
+      <a href="project/uhi-bench/buenos-aires-transfer.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Cross-city transfer: Buenos Aires">
+        <img src="project/uhi-bench/buenos-aires-transfer.png" alt="Cross-city transfer: Buenos Aires. Directed Air-UHI transfer with Buenos Aires as target and source reveals asymmetric transfer performance. Ribbon width and color encode transfer error." width="3771" height="2986" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Cross-city transfer: Buenos Aires</strong>
+        Directed Air-UHI transfer with Buenos Aires as target and source reveals asymmetric transfer performance. Ribbon width and color encode transfer error.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/buenos-aires-transfer.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a>
+      </figcaption>
+    </figure>
+    <figure class="benchmark-figure">
+      <a href="project/uhi-bench/hamburg-lst-transfer.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Cross-city LST-UHI transfer: Hamburg">
+        <img src="project/uhi-bench/hamburg-lst-transfer.png" alt="Cross-city LST-UHI transfer: Hamburg. Directed LST-UHI transfer with Hamburg as source and target. The two directions show different error patterns, with particularly high errors between Hamburg and Johannesburg." width="3619" height="2986" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Cross-city LST-UHI transfer: Hamburg</strong>
+        Directed LST-UHI transfer with Hamburg as source and target. The two directions show different error patterns, with particularly high errors between Hamburg and Johannesburg.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/hamburg-lst-transfer.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a>
+      </figcaption>
+    </figure>
+    <figure class="benchmark-figure benchmark-figure--wide">
+      <a href="project/uhi-bench/transfer-diagnostics.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Transfer diagnostics and environmental context">
+        <img src="project/uhi-bench/transfer-diagnostics.png" alt="Transfer diagnostics and environmental context. Additional transfer maps alongside seasonal UHI cycles, wind speed, boundary-layer height, and joint distributions of building coverage and distance to water." width="2382" height="2400" loading="lazy" decoding="async" />
+      </a>
+      <figcaption>
+        <strong>Transfer diagnostics and environmental context</strong>
+        Additional transfer maps alongside seasonal UHI cycles, wind speed, boundary-layer height, and joint distributions of building coverage and distance to water.
+        <br><a class="benchmark-figure-link" href="project/uhi-bench/transfer-diagnostics.png" target="_blank" rel="noopener noreferrer">View full-size figure ↗</a> · <a class="benchmark-figure-link" href="project/uhi-bench/transfer-diagnostics.pdf" target="_blank" rel="noopener noreferrer">Original PDF ↗</a>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+
 <!-- ══════════════════════════════════════════════════════════
-     01 · Atmosphere-Aware Place Discovery
+     02 · Atmosphere-Aware Place Discovery
      ══════════════════════════════════════════════════════════ -->
 <section class="proj-block" id="sigspatial">
 <div class="container">
 
   <div class="proj-eyebrow">
-    <span class="proj-num">01 / 05</span>
+    <span class="proj-num">02 / 06</span>
     <span class="pub-status pub-status--conference">Accepted · ACM SIGSPATIAL 2026</span>
     <span class="pub-status pub-status--conference" style="background:rgba(79,70,229,.08);color:var(--cyan);border-color:rgba(79,70,229,.2);">TU Munich · 2026</span>
   </div>
@@ -476,7 +628,7 @@
 <div class="container">
 
   <div class="proj-eyebrow">
-    <span class="proj-num">02 / 05</span>
+    <span class="proj-num">03 / 06</span>
     <span class="pub-status pub-status--conference">Accepted · ACM SIGSPATIAL 2026</span>
     <span class="pub-status pub-status--published" style="background:rgba(79,70,229,.06);color:var(--cyan);border-color:rgba(79,70,229,.15);">TU Munich · 2026</span>
   </div>
@@ -559,13 +711,13 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     03 · Master Thesis
+     04 · Master Thesis
      ══════════════════════════════════════════════════════════ -->
 <section class="proj-block" id="thesis">
 <div class="container">
 
   <div class="proj-eyebrow">
-    <span class="proj-num">03 / 05</span>
+    <span class="proj-num">04 / 06</span>
     <span class="pub-status" style="background:rgba(16,185,129,.08);color:#059669;border:1px solid rgba(16,185,129,.2);">Master Thesis · RWTH Aachen</span>
   </div>
   <h2 class="proj-title">Urban Heat Inequality and Gentrification Risk Trade-off</h2>
@@ -713,7 +865,7 @@
 <div class="container">
 
   <div class="proj-eyebrow">
-    <span class="proj-num">04 / 05</span>
+    <span class="proj-num">05 / 06</span>
     <span class="pub-status pub-status--published">Published · Buildings · IF 3.2 · JCR Q2</span>
     <span class="pub-status" style="background:rgba(16,185,129,.08);color:#059669;border:1px solid rgba(16,185,129,.2);">First Author · Oct 2025</span>
   </div>
@@ -830,7 +982,7 @@
 <div class="container">
 
   <div class="proj-eyebrow">
-    <span class="proj-num">05 / 05</span>
+    <span class="proj-num">06 / 06</span>
     <span class="pub-status pub-status--published">Published · DOI</span>
     <span class="pub-status pub-status--conference">61st ISOCARP Congress · Riyadh</span>
   </div>
@@ -1078,7 +1230,7 @@ document.querySelectorAll('.js-gallery').forEach(gallery => {
 
 /* ── Sticky pill highlight ──────────────────────────────────── */
 (function(){
-  const ids  = ['sigspatial','uhifm','thesis','buildings','isocarp'];
+  const ids  = ['uhi-bench','sigspatial','uhifm','thesis','buildings','isocarp'];
   const pills = document.querySelectorAll('.proj-pill');
   const navH  = 60 + 40;
   const io = new IntersectionObserver(entries => {
