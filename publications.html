@@ -23,80 +23,172 @@
 
 <main class="pubs-main">
   <h1 class="pubs-title">Publications</h1>
-  <p class="pubs-note"><sup>*</sup> corresponding author</p>
+  <p class="pubs-note">
+    Also see my <a href="https://scholar.google.com/citations?user=Ce4Ut7UAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.
+    <sup>*</sup> denotes corresponding author.
+  </p>
 
-  <section class="card-block pubs-card">
+  <div class="pub-filters" role="group" aria-label="Filter publications by year">
+    <span class="pub-filters__label">Browse by year</span>
+    <button class="pub-filter is-active" type="button" data-year="all" aria-pressed="true">All</button>
+    <button class="pub-filter" type="button" data-year="2027" aria-pressed="false">2027</button>
+    <button class="pub-filter" type="button" data-year="2026" aria-pressed="false">2026</button>
+    <button class="pub-filter" type="button" data-year="2025" aria-pressed="false">2025</button>
+    <button class="pub-filter" type="button" data-year="2024" aria-pressed="false">2024</button>
+  </div>
 
-    <h2 class="pubs-year">2027</h2>
-    <article class="pl-item">
-      <h3><a href="https://arxiv.org/abs/2608.23857" target="_blank" rel="noopener noreferrer">UHI-Bench: Benchmarking Dual-Source Urban Heat Island Modeling Across Cities in Diverse Climate Regimes</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong>, Chenxi Liu, Yi Xie, Aopu Xu, Zhuoqi Zeng, Ziyue Li</div>
-      <div class="pl-venue">KDD 2027, Datasets and Benchmarks Track (Poster)
-        <span class="pl-links"><a href="https://arxiv.org/abs/2608.23857" target="_blank" rel="noopener noreferrer">arXiv</a><a href="https://arxiv.org/pdf/2608.23857" target="_blank" rel="noopener noreferrer">PDF</a><a href="projects.html#uhi-bench">Project</a></span>
-      </div>
-    </article>
+  <section class="card-block paper-list" id="paper-list">
 
-    <h2 class="pubs-year">2026</h2>
-    <article class="pl-item">
-      <h3><a href="https://doi.org/10.1145/3806096.3844831" target="_blank" rel="noopener noreferrer">Tracing the Evidence Behind Zero-Shot Time-Series Forecasting: A Source-First Taxonomy and Audit Framework</a></h3>
-      <div class="pl-authors">Delun Kong, <strong>Wanyun Ling</strong>, Chenxi Liu, Ziyue Li</div>
-      <div class="pl-venue">AI Summit '26: Proceedings of the ACM AI Leadership Summit 2026 · Article 32, pp. 1–5 · November 10, 2026
-        <span class="pl-links"><a href="https://doi.org/10.1145/3806096.3844831" target="_blank" rel="noopener noreferrer">DOI</a></span>
+    <!-- UHI-Bench -->
+    <div class="paper-box" data-year="2027">
+      <div class="paper-box-image">
+        <div class="badge">Accepted · Poster</div>
+        <img src="project/uhi-bench/benchmark-overview.png" alt="UHI-Bench framework: signal, mechanism, and cross-city transfer" loading="lazy" />
       </div>
-    </article>
-    <article class="pl-item">
-      <h3><a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" target="_blank">Towards an Interpretable Urban Heat Island Foundation Model for Forecasting, Attribution, and Climate Adaptation Decision Support</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pl-venue">34th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, Riverside, California, USA, November 3–6, 2026
-        <span class="pl-links"><a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" target="_blank">Abstract</a><a href="projects.html#uhifm">Project</a></span>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://arxiv.org/abs/2608.23857" target="_blank" rel="noopener noreferrer">UHI-Bench: Benchmarking Dual-Source Urban Heat Island Modeling Across Cities in Diverse Climate Regimes</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong>, Chenxi Liu, Yi Xie, Aopu Xu, Zhuoqi Zeng, Ziyue Li</div>
+        <div class="paper-venue">KDD 2027 · Datasets and Benchmarks Track (Poster)</div>
+        <div class="paper-links">
+          <a class="paper-link link-paper" href="https://arxiv.org/abs/2608.23857" target="_blank" rel="noopener noreferrer">arXiv</a>
+          <a class="paper-link link-paper" href="https://arxiv.org/pdf/2608.23857" target="_blank" rel="noopener noreferrer">PDF</a>
+          <a class="paper-link link-project" href="projects.html#uhi-bench">Project</a>
+        </div>
       </div>
-    </article>
-    <article class="pl-item">
-      <h3><a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" target="_blank">Atmosphere-Aware Place Discovery: Semantic Urban Mapping with Multimodal Vibe Enrichment</a></h3>
-      <div class="pl-authors">Mikhail Aizinov, <strong>Wanyun Ling</strong>, Evgenii Kniazev, Chenxi Liu, Ziyue Li</div>
-      <div class="pl-venue">34th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, Riverside, California, USA, November 3–6, 2026
-        <span class="pl-links"><a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" target="_blank">Paper</a><a href="projects.html#sigspatial">Project</a></span>
-      </div>
-    </article>
+    </div>
 
-    <h2 class="pubs-year">2025</h2>
-    <article class="pl-item">
-      <h3><a href="https://doi.org/10.3390/buildings15213820" target="_blank">Adaptive Urban Heat Mitigation Through Ensemble Learning: Socio-Spatial Modeling and Intervention Analysis</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong><sup>*</sup>, Liyang Chu</div>
-      <div class="pl-venue"><em>Buildings</em>, 15(21), 3820 · October 2025 · IF 3.2, JCR Q2
-        <span class="pl-links"><a href="https://doi.org/10.3390/buildings15213820" target="_blank">DOI</a><a href="projects.html#buildings">Project</a></span>
+    <!-- AI Summit -->
+    <div class="paper-box" data-year="2026">
+      <div class="paper-box-image stack">
+        <div class="badge">Conference Proceedings</div>
+        <img src="assets/img/zeroshot-fig1.png" alt="Figure 1: source-first taxonomy of zero-shot time-series forecasting" loading="lazy" />
+        <img src="assets/img/zeroshot-fig2.png" alt="Figure 2: evolution timeline of zero-shot time-series forecasting" loading="lazy" />
       </div>
-    </article>
-    <article class="pl-item">
-      <h3><a href="https://doi.org/10.47472/VTngcBRh" target="_blank">Urban Climate Justice through Interpretable Ensemble Learning: Heat Exposure Inequities and Planning Strategies in Metro Vancouver</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pl-venue">61st ISOCARP World Planning Congress · Riyadh, Saudi Arabia · December 1–4, 2025
-        <span class="pl-links"><a href="https://doi.org/10.47472/VTngcBRh" target="_blank">DOI</a><a href="projects.html#isocarp">Project</a></span>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://doi.org/10.1145/3806096.3844831" target="_blank" rel="noopener noreferrer">Tracing the Evidence Behind Zero-Shot Time-Series Forecasting: A Source-First Taxonomy and Audit Framework</a>
+        <div class="paper-authors">Delun Kong, <strong>Wanyun Ling</strong>, Chenxi Liu, Ziyue Li</div>
+        <div class="paper-venue">AI Summit '26: Proceedings of the ACM AI Leadership Summit 2026 · Article 32, pp. 1–5 · November 10, 2026</div>
+        <div class="paper-links">
+          <a class="paper-link link-doi" href="https://doi.org/10.1145/3806096.3844831" target="_blank" rel="noopener noreferrer">DOI</a>
+        </div>
       </div>
-    </article>
-    <article class="pl-item">
-      <h3><a href="https://drive.google.com/file/d/1XEeXJ6phXpbKPXO7Ly1LzIKCK3nIzsDy/view?usp=sharing" target="_blank">Data-Driven Circularity: Visualizing Urban Heat Inequity for Just Green Transitions – A Case Study in Vancouver</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pl-venue">Urban Futures Symposium 2025 · Dübendorf, Switzerland · September 1–2, 2025
-        <span class="pl-links"><a href="https://drive.google.com/file/d/1XEeXJ6phXpbKPXO7Ly1LzIKCK3nIzsDy/view?usp=sharing" target="_blank">Slides</a></span>
-      </div>
-    </article>
-    <article class="pl-item">
-      <h3><a href="https://drive.google.com/file/d/1juG5wv_VQWsFcpZoT_dI-lWEGvm11koB/view?usp=sharing" target="_blank">Ensemble Learning Approaches for Adaptive Urban Heat Mitigation: A Socio-Spatial Analysis</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pl-venue">Global Smart Cities Summit &amp; 4th International Conference on Urban Informatics (GSCS &amp; ICUI 2025) · Hong Kong · August 5–8, 2025
-        <span class="pl-links"><a href="https://drive.google.com/file/d/1juG5wv_VQWsFcpZoT_dI-lWEGvm11koB/view?usp=sharing" target="_blank">Slides</a></span>
-      </div>
-    </article>
+    </div>
 
-    <h2 class="pubs-year">2024</h2>
-    <article class="pl-item">
-      <h3><a href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" target="_blank">Flut der Zeit: Aufbau einer lebendigen Nachbarschaft für verschiedene Altersgruppen</a></h3>
-      <div class="pl-authors"><strong>Wanyun Ling</strong>, Yunyi Huang</div>
-      <div class="pl-venue">Book chapter · Städtebau Workflow: Kupferstadt Stolberg · RWTH Aachen University · pp. 36–39 · 2024
-        <span class="pl-links"><a href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" target="_blank">PDF</a></span>
+    <!-- SIGSPATIAL: UHIFM -->
+    <div class="paper-box" data-year="2026">
+      <div class="paper-box-image">
+        <div class="badge">Accepted · Conference</div>
+        <img src="project/ecmlpkdd/draft_1/UHIFMroadmap.png" alt="UHI Foundation Model roadmap" loading="lazy" />
       </div>
-    </article>
+      <div class="paper-box-text">
+        <a class="paper-title" href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" target="_blank">Towards an Interpretable Urban Heat Island Foundation Model for Forecasting, Attribution, and Climate Adaptation Decision Support</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong></div>
+        <div class="paper-venue">34th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, Riverside, California, USA, November 3–6, 2026</div>
+        <div class="paper-links">
+          <a class="paper-link link-paper" href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" target="_blank">Abstract</a>
+          <a class="paper-link link-project" href="projects.html#uhifm">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGSPATIAL: Atmosphere-Aware -->
+    <div class="paper-box" data-year="2026">
+      <div class="paper-box-image">
+        <div class="badge">Accepted · Conference</div>
+        <img src="project/Sigspatial_2026/Images/figure2.png" alt="System architecture" loading="lazy" />
+      </div>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" target="_blank">Atmosphere-Aware Place Discovery: Semantic Urban Mapping with Multimodal Vibe Enrichment</a>
+        <div class="paper-authors">Mikhail Aizinov, <strong>Wanyun Ling</strong>, Evgenii Kniazev, Chenxi Liu, Ziyue Li</div>
+        <div class="paper-venue">34th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, Riverside, California, USA, November 3–6, 2026</div>
+        <div class="paper-links">
+          <a class="paper-link link-paper" href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" target="_blank">Paper</a>
+          <a class="paper-link link-project" href="projects.html#sigspatial">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buildings -->
+    <div class="paper-box" data-year="2025">
+      <div class="paper-box-image">
+        <div class="badge">Journal</div>
+        <img src="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image1.png" alt="Adaptive urban heat mitigation" loading="lazy" />
+      </div>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://doi.org/10.3390/buildings15213820" target="_blank">Adaptive Urban Heat Mitigation Through Ensemble Learning: Socio-Spatial Modeling and Intervention Analysis</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong><sup>*</sup>, Liyang Chu</div>
+        <div class="paper-venue"><em>Buildings</em>, 15(21), 3820 · October 2025 · IF 3.2, JCR Q2</div>
+        <div class="paper-links">
+          <a class="paper-link link-doi" href="https://doi.org/10.3390/buildings15213820" target="_blank">DOI</a>
+          <a class="paper-link link-project" href="projects.html#buildings">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ISOCARP -->
+    <div class="paper-box" data-year="2025">
+      <div class="paper-box-image">
+        <div class="badge">Conference</div>
+        <img src="project/ISOCARP/images/image6.png" alt="ISOCARP urban climate justice" loading="lazy" />
+      </div>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://doi.org/10.47472/VTngcBRh" target="_blank">Urban Climate Justice through Interpretable Ensemble Learning: Heat Exposure Inequities and Planning Strategies in Metro Vancouver</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong></div>
+        <div class="paper-venue">61st ISOCARP World Planning Congress · Riyadh, Saudi Arabia · December 1–4, 2025</div>
+        <div class="paper-links">
+          <a class="paper-link link-doi" href="https://doi.org/10.47472/VTngcBRh" target="_blank">DOI</a>
+          <a class="paper-link link-project" href="projects.html#isocarp">Project</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Urban Futures -->
+    <div class="paper-box" data-year="2025">
+      <div class="paper-box-image">
+        <div class="badge">Conference</div>
+        <div class="thumb-placeholder"><span>Urban Futures<br>Symposium 2025</span></div>
+      </div>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://drive.google.com/file/d/1XEeXJ6phXpbKPXO7Ly1LzIKCK3nIzsDy/view?usp=sharing" target="_blank">Data-Driven Circularity: Visualizing Urban Heat Inequity for Just Green Transitions – A Case Study in Vancouver</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong></div>
+        <div class="paper-venue">Urban Futures Symposium 2025 · Dübendorf, Switzerland · September 1–2, 2025</div>
+        <div class="paper-links">
+          <a class="paper-link link-paper" href="https://drive.google.com/file/d/1XEeXJ6phXpbKPXO7Ly1LzIKCK3nIzsDy/view?usp=sharing" target="_blank">Slides</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GSCS & ICUI -->
+    <div class="paper-box" data-year="2025">
+      <div class="paper-box-image">
+        <div class="badge">Conference</div>
+        <div class="thumb-placeholder"><span>GSCS &amp; ICUI<br>2025</span></div>
+      </div>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://drive.google.com/file/d/1juG5wv_VQWsFcpZoT_dI-lWEGvm11koB/view?usp=sharing" target="_blank">Ensemble Learning Approaches for Adaptive Urban Heat Mitigation: A Socio-Spatial Analysis</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong></div>
+        <div class="paper-venue">Global Smart Cities Summit &amp; 4th International Conference on Urban Informatics (GSCS &amp; ICUI 2025) · Hong Kong · August 5–8, 2025</div>
+        <div class="paper-links">
+          <a class="paper-link link-paper" href="https://drive.google.com/file/d/1juG5wv_VQWsFcpZoT_dI-lWEGvm11koB/view?usp=sharing" target="_blank">Slides</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book chapter -->
+    <div class="paper-box" data-year="2024">
+      <div class="paper-box-image">
+        <div class="badge">Book Chapter</div>
+        <div class="thumb-placeholder"><span>Städtebau<br>Workflow 2024</span></div>
+      </div>
+      <div class="paper-box-text">
+        <a class="paper-title" href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" target="_blank">Flut der Zeit: Aufbau einer lebendigen Nachbarschaft für verschiedene Altersgruppen</a>
+        <div class="paper-authors"><strong>Wanyun Ling</strong>, Yunyi Huang</div>
+        <div class="paper-venue">Städtebau Workflow: Kupferstadt Stolberg · RWTH Aachen University · pp. 36–39 · 2024</div>
+        <div class="paper-links">
+          <a class="paper-link link-paper" href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" target="_blank">PDF</a>
+        </div>
+      </div>
+    </div>
 
   </section>
 </main>
@@ -115,5 +207,21 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+/* ── Year filter ───────────────────────────────────────────── */
+(function(){
+  const buttons = document.querySelectorAll('.pub-filter');
+  const papers = document.querySelectorAll('.paper-box');
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    const year = btn.dataset.year;
+    buttons.forEach(b => {
+      const on = b === btn;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    papers.forEach(p => { p.hidden = year !== 'all' && p.dataset.year !== year; });
+  }));
+})();
+</script>
 </body>
 </html>

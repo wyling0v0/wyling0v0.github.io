@@ -1503,22 +1503,63 @@ body {
 .pubs-main { max-width: 860px; margin: 0 auto; padding: calc(var(--nav-h) + 2.5rem) 24px 40px; }
 .pubs-title { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; margin-bottom: .25rem; }
 .pubs-note { font-size: .8rem; color: var(--text-sub); margin-bottom: 1.25rem; }
-.pubs-card { padding-top: 12px; }
-.pubs-year {
-  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
-  letter-spacing: .18em; color: var(--cyan);
-  margin: 1.4rem 0 .2rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border);
+.pubs-main { max-width: 980px; }
+
+/* Year filter chips */
+.pub-filters { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.1rem; }
+.pub-filters__label { margin-right: .2rem; color: var(--text-sub); font-size: .88rem; font-weight: 600; }
+.pub-filter {
+  padding: .36rem .8rem; border: 1px solid var(--border2); border-radius: 999px;
+  background: #fff; color: var(--text-sub); cursor: pointer;
+  font: 600 .85rem/1 var(--font-body);
+  transition: background-color .15s, border-color .15s, color .15s, transform .15s;
 }
-.pubs-year:first-of-type { margin-top: .6rem; }
-.pl-item { padding: 12px 0 4px; }
-.pl-item h3 { font-size: .98rem; font-weight: 600; line-height: 1.45; margin-bottom: 3px; }
-.pl-item h3 a { color: var(--text); }
-.pl-item h3 a:hover { color: var(--cyan); }
-.pl-authors { font-size: .84rem; color: var(--text-sub); }
-.pl-authors strong { color: var(--text); font-weight: 600; }
-.pl-venue { font-size: .84rem; font-style: italic; color: var(--text-sub); margin-top: 1px; }
-.pl-links { font-style: normal; margin-left: 8px; }
-.pl-links a { font-size: .78rem; font-weight: 500; margin-right: 10px; }
+.pub-filter:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
+.pub-filter.is-active { border-color: var(--cyan); background: var(--cyan); color: #fff; }
+
+/* Paper rows: image left, text right */
+.paper-list { padding: 0 28px; }
+.paper-box {
+  display: grid; grid-template-columns: 260px 1fr; gap: 26px; align-items: center;
+  padding: 24px 0; border-bottom: 1px solid var(--border);
+}
+.paper-box:last-child { border-bottom: 0; }
+.paper-box[hidden] { display: none; }
+.paper-box-image {
+  position: relative; background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden; box-shadow: 2px 3px 8px rgba(30, 60, 120, .12);
+}
+.paper-box-image img { width: 100%; height: auto; display: block; object-fit: contain; }
+.paper-box-image.stack { padding: 6px; display: flex; flex-direction: column; gap: 4px; }
+.paper-box-image .badge {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  font: 600 .64rem/1 var(--font-body); letter-spacing: .04em; text-transform: uppercase;
+  background: var(--cyan); color: #fff; padding: 4px 8px; border-radius: 4px;
+}
+.thumb-placeholder {
+  aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; text-align: center;
+  background: linear-gradient(135deg, #e6efff, #c9dcf8); color: var(--cyan);
+  font: 600 .95rem/1.35 var(--font-head); padding: 1rem;
+}
+.paper-title { display: block; font-size: 1.02rem; font-weight: 600; line-height: 1.45; color: var(--text); margin-bottom: 6px; }
+.paper-title:hover { color: var(--cyan); }
+.paper-authors { font-size: .88rem; color: var(--text-sub); }
+.paper-authors strong { color: var(--text); font-weight: 600; }
+.paper-venue { font-size: .86rem; font-style: italic; color: var(--text-sub); margin-top: 3px; }
+.paper-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.paper-link {
+  font: 600 .74rem/1 var(--font-body); padding: 6px 12px; border-radius: 6px;
+  border: 1px solid transparent; transition: filter .15s, transform .15s;
+}
+.paper-link:hover { filter: brightness(.95); transform: translateY(-1px); }
+.link-paper   { background: #e8ecff; color: #3730a3; }
+.link-doi     { background: #dff1fb; color: #0b5d86; }
+.link-project { background: #fff; color: var(--text-sub); border-color: var(--border2); }
+
+@media (max-width: 720px) {
+  .paper-list { padding: 0 18px; }
+  .paper-box { grid-template-columns: 1fr; gap: 14px; }
+}
 
 @media (max-width: 768px) {
   .grid-2 { grid-template-columns: 1fr; gap: 22px 0; }
