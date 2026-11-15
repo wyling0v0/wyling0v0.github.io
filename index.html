@@ -10,14 +10,10 @@
   <style>
     .cursor {
       display: inline-block; width: 2px; height: 1em;
-      background: #a5b4fc; margin-left: 2px;
+      background: #93c5fd; margin-left: 2px;
       animation: blink 0.85s step-end infinite; vertical-align: text-bottom;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .hero-banner .hero-name-line {
-      font-size: clamp(1.6rem, 3.4vw, 2.4rem); font-weight: 700; color: #fff;
-      letter-spacing: 2px; margin: 0 0 .6rem; text-transform: uppercase;
-    }
   </style>
 </head>
 <body>
@@ -40,7 +36,6 @@
   <div class="hero-bg" style="background-image:url('assets/img/hero-bg.png')"></div>
   <div class="hero-banner-inner">
     <div class="hero-tag">Urban AI · TU Munich</div>
-    <div class="hero-name-line">Urban Climate Intelligence</div>
     <div class="hero-role"><span id="hero-typed"></span><span class="cursor"></span></div>
     <div class="coord-badge">48.1351°N · 11.5820°E · Munich</div>
   </div>
@@ -59,8 +54,6 @@
         and <strong>Dr. Chenxi Liu</strong> at the Chinese Academy of Sciences.
       </p>
       <p>
-        My current research centres on the Urban Heat Island Foundation Model (UHIFM), through which I am developing a global, 16-city, hourly pretraining dataset and benchmark for UHI modelling.
-        Our paper <a href="projects.html#uhi-bench">UHI-Bench</a> has been accepted as a poster at KDD 2027 (Datasets and Benchmarks Track).
         My work spans three threads:
       </p>
       <ol class="focus-list">
@@ -85,7 +78,8 @@
       <div class="contact-links">
         <a href="mailto:wanyun.ling@tum.de"><i class="fa-solid fa-envelope ico"></i> wanyun.ling@tum.de</a>
         <a href="cv.html"><i class="fa-solid fa-file-lines ico"></i> CV</a>
-        <a href="wanyun_ling_cv_2026.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-download ico"></i> CV (PDF)</a>
+        <a href="https://scholar.google.com/citations?user=Ce4Ut7UAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap ico"></i> Google Scholar</a>
+        <a href="https://www.linkedin.com/in/wanyun-ling-a804bb298" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin ico"></i> LinkedIn</a>
         <span style="color:var(--text-sub);"><i class="fa-solid fa-location-dot ico"></i> Heilbronn, Germany</span>
       </div>
     </div>
@@ -140,6 +134,7 @@
   <section class="card-block" id="news">
     <h3 class="sub-title">News</h3>
     <ul class="news-list">
+      <li><span class="when">Nov 2026</span><span>Our paper <a href="https://doi.org/10.1145/3806096.3844831" target="_blank" rel="noopener noreferrer"><em>Tracing the Evidence Behind Zero-Shot Time-Series Forecasting</em></a> was published in the Proceedings of the ACM AI Leadership Summit 2026 (AI Summit '26).</span></li>
       <li><span class="when">Nov 2026</span><span><a href="projects.html#uhi-bench">UHI-Bench</a> accepted as a poster at KDD 2027 (Datasets and Benchmarks Track).</span></li>
       <li><span class="when">Nov 2026</span><span>Our paper <em>Decoupling Perception from Description: Computation-Grounded Representation Alignment between Multivariate Time Series and Language</em> received the <span class="hl">Best Paper Award</span> at the MFMB Workshop on Multimodal and Foundation Models in Banking.</span></li>
       <li><span class="when">Oct 2026</span><span>Received an <span class="hl">ACM SIGSPATIAL Travel Grant</span> to attend SIGSPATIAL 2026.</span></li>
@@ -156,6 +151,22 @@
       <a class="more" href="publications.html">(view all <i class="fa-solid fa-angles-right"></i>)</a>
     </div>
     <p class="footnote-small"><sup>*</sup> corresponding author</p>
+
+    <div class="row-item">
+      <div class="row-thumb stack">
+        <img src="assets/img/zeroshot-fig1.png" alt="Figure 1: source-first taxonomy of zero-shot time-series forecasting" loading="lazy" />
+        <img src="assets/img/zeroshot-fig2.png" alt="Figure 2: evolution timeline of zero-shot time-series forecasting" loading="lazy" />
+      </div>
+      <div class="row-body">
+        <div class="row-kicker">Published · ACM AI Leadership Summit 2026 · Nov 2026</div>
+        <h3><a href="https://doi.org/10.1145/3806096.3844831" target="_blank" rel="noopener noreferrer">Tracing the Evidence Behind Zero-Shot Time-Series Forecasting: A Source-First Taxonomy and Audit Framework</a></h3>
+        <div class="row-authors">Delun Kong, <strong>Wanyun Ling</strong>, Chenxi Liu, Ziyue Li</div>
+        <div class="row-venue">AI Summit '26: Proceedings of the ACM AI Leadership Summit 2026 · Article 32, pp. 1–5</div>
+        <div class="row-links">
+          <a href="https://doi.org/10.1145/3806096.3844831" class="pub-link" target="_blank" rel="noopener noreferrer">DOI</a>
+        </div>
+      </div>
+    </div>
 
     <div class="row-item">
       <div class="row-thumb"><img src="project/uhi-bench/benchmark-overview.png" alt="UHI-Bench framework" width="4992" height="2879" loading="lazy" decoding="async" /></div>
