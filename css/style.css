@@ -1574,6 +1574,7 @@ body {
 @media (max-width: 768px) {
   .grid-2 { grid-template-columns: 1fr; gap: 22px 0; }
   .pubs-main { padding-left: 16px; padding-right: 16px; }
+  .about-card p { text-align: left; }
   .news-list li { grid-template-columns: 70px 1fr; gap: 10px; }
   .plain-list li, .tl-row { flex-direction: column; gap: 0; }
   .plain-list li { padding: 6px 0; }
