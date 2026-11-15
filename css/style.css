@@ -1556,6 +1556,16 @@ body {
 .link-doi     { background: #dff1fb; color: #0b5d86; }
 .link-project { background: #fff; color: var(--text-sub); border-color: var(--border2); }
 
+/* Text-only rows (no figure): a few compact lines */
+.paper-box.text-only { grid-template-columns: 1fr; gap: 0; padding: 16px 0; }
+.paper-box.text-only .paper-title { font-size: .98rem; margin-bottom: 3px; }
+.paper-box.text-only .paper-links { margin-top: 8px; }
+.paper-tag {
+  display: inline-block; margin-bottom: 4px;
+  font: 600 .64rem/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--cyan);
+}
+
 @media (max-width: 720px) {
   .paper-list { padding: 0 18px; }
   .paper-box { grid-template-columns: 1fr; gap: 14px; }
