@@ -5,595 +5,250 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wanyun Ling — Urban AI</title>
   <meta name="description" content="Wanyun Ling — PhD Researcher at TU Munich. GeoAI, Multimodal Spatio-Temporal Data Mining, Interpretable ML for Urban Climate." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ── Typed cursor ────────────────────────────────────────────── */
     .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: var(--cyan);
-      margin-left: 2px;
-      animation: blink 0.85s step-end infinite;
-      vertical-align: text-bottom;
+      display: inline-block; width: 2px; height: 1em;
+      background: #a5b4fc; margin-left: 2px;
+      animation: blink 0.85s step-end infinite; vertical-align: text-bottom;
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-    /* ── Research Areas Grid ────────────────────────────────────── */
-    .area-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .75rem;
-      margin-top: 2rem;
-    }
-    .area-card {
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 6px;
-      padding: 1.75rem;
-      position: relative;
-      overflow: hidden;
-      transition: background var(--transition), box-shadow var(--transition);
-    }
-    .area-card::before {
-      content:'';
-      position:absolute;
-      top:0;left:0;right:0;
-      height:2px;
-      background:linear-gradient(90deg,var(--cyan),transparent);
-      opacity:0;
-      transition:opacity var(--transition);
-    }
-    .area-card:hover{background:rgba(255,255,255,0.85);box-shadow:0 4px 20px rgba(0,0,0,0.06);}
-    .area-card:hover::before{opacity:1;}
-    .area-num{font-family:var(--font-mono);font-size:0.6rem;color:var(--cyan);letter-spacing:.15em;margin-bottom:.75rem;}
-    .area-card h3{font-family:var(--font-head);font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.5rem;}
-    .area-card p{font-size:.82rem;color:var(--text-sub);line-height:1.65;}
-
-    /* ── Feature Cards ──────────────────────────────────────────── */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: border-color var(--transition), transform var(--transition);
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-    }
-    .feature-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-3px);
-    }
-    .feature-media {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: var(--surface2);
-      position: relative;
-    }
-    .feature-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      transition: filter 0.3s;
-    }
-    .feature-card:hover .feature-media img { filter: saturate(1.05); }
-    .feature-media video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      background: #000;
-      pointer-events: none;
-    }
-    .video-badge {
-      position: absolute;
-      bottom: 0.5rem;
-      right: 0.6rem;
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
-      background: rgba(0,0,0,0.55);
-      color: rgba(255,255,255,0.75);
-      padding: 0.15rem 0.45rem;
-      border-radius: 2px;
-    }
-    .feature-body {
-      padding: 1.1rem 1.25rem 1.25rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .feature-tag {
-      font-family: var(--font-mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin-bottom: 0.4rem;
-    }
-    .feature-card h3 {
-      font-family: var(--font-head);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-      margin-bottom: 0.35rem;
-    }
-    .feature-card p {
-      font-size: 0.79rem;
-      color: var(--text-sub);
-      line-height: 1.6;
-      flex: 1;
-    }
-    .feature-arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.06em;
-      color: var(--cyan);
-      margin-top: 0.7rem;
-      transition: gap var(--transition);
-    }
-    .feature-card:hover .feature-arrow { gap: 0.55rem; }
-
-    /* ── Full Publication List ──────────────────────────────────── */
-    .pub-year-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--cyan);
-      margin: 2rem 0 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .pub-year-label::after {
-      content:'';
-      flex:1;
-      height:1px;
-      background:var(--border);
-    }
-
-    /* ── Static keyword tags (no hover/click interaction) ─────── */
-    .chip--tag {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.22rem 0.6rem;
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 3px;
-      color: var(--text-sub);
-      background: transparent;
-      cursor: default;
-      display: inline-block;
-      margin: 0.2rem 0.2rem 0 0;
-    }
-    .chip--tag.accent {
-      border-color: rgba(79,70,229,0.3);
-      color: var(--cyan);
-    }
-
-    /* ── Responsive ──────────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .area-grid    { grid-template-columns: 1fr 1fr; }
-      .feature-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .area-grid { grid-template-columns: 1fr; }
+    .hero-banner .hero-name-line {
+      font-size: clamp(1.6rem, 3.4vw, 2.4rem); font-weight: 700; color: #fff;
+      letter-spacing: 2px; margin: 0 0 .6rem; text-transform: uppercase;
     }
   </style>
 </head>
 <body>
-<canvas id="bg-canvas"></canvas>
 
 <!-- ── Navigation ──────────────────────────────────────────────── -->
 <nav class="nav">
-  <div class="nav-logo">
-    <span class="nav-dot"></span>
-    Wanyun Ling
-    <span>/ PhD Researcher</span>
-  </div>
+  <a class="brand" href="index.html">Wanyun Ling</a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="publications.html">Publications</a></li>
     <li><a href="projects.html">Projects</a></li>
-    <li><a href="#publications">Publications</a></li>
-    <li><a href="cv.html">CV</a></li>
   </ul>
   <button class="nav-toggle" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<main>
+<!-- ── Hero banner ─────────────────────────────────────────────── -->
+<header class="hero-banner">
+  <div class="hero-bg" style="background-image:url('assets/img/hero-bg.png')"></div>
+  <div class="hero-banner-inner">
+    <div class="hero-tag">Urban AI · TU Munich</div>
+    <div class="hero-name-line">Urban Climate Intelligence</div>
+    <div class="hero-role"><span id="hero-typed"></span><span class="cursor"></span></div>
+    <div class="coord-badge">48.1351°N · 11.5820°E · Munich</div>
+  </div>
+</header>
 
-<!-- ── Hero ─────────────────────────────────────────────────────── -->
-<section class="hero section">
-  <div class="container">
-    <div class="hero-content">
+<main class="page-main">
 
-      <div class="hero-tag">Urban AI · TU Munich</div>
-
-      <h1 class="hero-name">Wanyun<br><em>Ling</em></h1>
-
-      <div class="hero-role">
-        <span id="hero-typed"></span><span class="cursor"></span>
-      </div>
-
-      <p class="hero-tagline">
-        Developing spatio-temporal foundation models<br>for urban climate intelligence.
+  <!-- ── About ─────────────────────────────────────────────────── -->
+  <section class="card-block about-card" id="about">
+    <div>
+      <h1>Wanyun <small>Ling</small></h1>
+      <div class="about-role"><i class="fa-solid fa-building-columns"></i> PhD Researcher · Technical University of Munich</div>
+      <p>
+        I am a first-year doctoral researcher at the <strong>Technical University of Munich</strong> (Department of Operations and Technology),
+        working on time series analysis, spatio-temporal data mining, and Urban AI. I am supervised by <strong>Prof. Dr. Ziyue Li</strong> at TUM
+        and <strong>Dr. Chenxi Liu</strong> at the Chinese Academy of Sciences.
       </p>
-
-      <div class="hero-cta">
-        <a href="projects.html" class="btn btn--primary">Projects</a>
-        <a href="#publications" class="btn btn--ghost">Publications</a>
-        <a href="cv.html" class="btn btn--ghost">CV</a>
+      <p>
+        My current research centres on the Urban Heat Island Foundation Model (UHIFM), through which I am developing a global, 16-city, hourly pretraining dataset and benchmark for UHI modelling.
+        Our paper <a href="projects.html#uhi-bench">UHI-Bench</a> has been accepted as a poster at KDD 2027 (Datasets and Benchmarks Track).
+        My work spans three threads:
+      </p>
+      <ol class="focus-list">
+        <li><strong>Spatio-Temporal Foundation Models.</strong> <span>Hourly urban climate forecasting, attribution, and cross-city transfer, centred on UHIFM.</span></li>
+        <li><strong>Interpretable Urban Climate AI.</strong> <span>Urban heat exposure, climate equity, and adaptive mitigation, linking SHAP attribution, scenario simulation, and Bayesian optimisation.</span></li>
+        <li><strong>Multimodal Urban Understanding.</strong> <span>Semantic urban mapping, POI retrieval, and vibe-aware place discovery from spatial, textual, and visual signals.</span></li>
+      </ol>
+      <div class="chips-row">
+        <span class="pill accent">Time Series Analysis</span>
+        <span class="pill">Spatio-Temporal Data Mining</span>
+        <span class="pill">Urban AI</span>
+        <span class="pill">Foundation Models</span>
+        <span class="pill">Urban Heat Island</span>
+        <span class="pill">Interpretable ML</span>
+        <span class="pill">GeoAI</span>
+        <span class="pill">Multimodal Learning</span>
       </div>
-
     </div>
-  </div>
-  <div class="scroll-hint">SCROLL</div>
-</section>
 
-<!-- ── About ─────────────────────────────────────────────────────── -->
-<section class="section" style="padding-top:2rem;">
-  <div class="container">
-    <div class="section-label">About</div>
-    <div class="section-divider"></div>
+    <div class="side">
+      <img class="avatar" src="assets/img/avatar.jpg" alt="Portrait of Wanyun Ling" width="520" height="520" />
+      <div class="contact-links">
+        <a href="mailto:wanyun.ling@tum.de"><i class="fa-solid fa-envelope ico"></i> wanyun.ling@tum.de</a>
+        <a href="cv.html"><i class="fa-solid fa-file-lines ico"></i> CV</a>
+        <a href="wanyun_ling_cv_2026.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-download ico"></i> CV (PDF)</a>
+        <span style="color:var(--text-sub);"><i class="fa-solid fa-location-dot ico"></i> Heilbronn, Germany</span>
+      </div>
+    </div>
+  </section>
 
-    <div style="display:grid;grid-template-columns:1fr 360px;gap:3.5rem;align-items:start;">
-      <div>
-        <p style="font-size:1rem;line-height:1.9;color:var(--text);margin-bottom:1.1rem;">
-          I am a first-year doctoral researcher at the <strong style="color:var(--cyan)">Technical University of Munich</strong>,
-          working on time series analysis, spatio-temporal data mining, and Urban AI.
-          I am supervised by <strong>Prof. Dr. Ziyue Li</strong> at TUM and <strong>Dr. Chenxi Liu</strong> at the Chinese Academy of Sciences.
-        </p>
-        <p style="font-size:.92rem;line-height:1.85;color:var(--text-sub);">
-          My current research centres on the Urban Heat Island Foundation Model (UHIFM), through which I am developing a global, 16-city, hourly pretraining dataset and benchmark for UHI modelling. Our paper <a href="projects.html#uhi-bench">UHI-Bench</a>, on benchmarking dual-source urban heat island modeling across cities in diverse climate regimes, has been accepted as a poster at KDD 2027 (Datasets and Benchmarks Track). More broadly, I aim to build generalizable urban climate foundation models that connect environmental, socio-economic, and health-related data with climate simulation and real-time urban decision support.
-        </p>
-        <div style="margin-top:1.5rem;display:flex;gap:.6rem;flex-wrap:wrap;">
-          <a href="mailto:wanyun.ling@tum.de" class="btn btn--ghost" style="font-size:.65rem;">
-            wanyun.ling@tum.de
-          </a>
-          <span class="btn btn--ghost" style="font-size:.65rem;cursor:default;">Heilbronn, Germany</span>
+  <!-- ── Education & Experience ────────────────────────────────── -->
+  <section class="card-block grid-2">
+    <div>
+      <h3 class="sub-title">Education</h3>
+      <ul class="tl">
+        <li>
+          <div class="tl-title">Technical University of Munich</div>
+          <div class="tl-row"><span>Dr. rer. pol. · Urban AI</span><em>2026 – now</em></div>
+        </li>
+        <li>
+          <div class="tl-title">RWTH Aachen University</div>
+          <div class="tl-row"><span>M.Sc. Transforming City Regions</span><em>2023 – 2026</em></div>
+        </li>
+        <li>
+          <div class="tl-title">Anhui Jianzhu University</div>
+          <div class="tl-row"><span>B.Arch. Architecture</span><em>2018 – 2023</em></div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="sub-title">Research Experience</h3>
+      <ul class="tl">
+        <li>
+          <div class="tl-title">TU Munich Smart City Lab</div>
+          <div class="tl-row"><span>PhD Researcher · Spatio-Temporal Data Mining</span><em>2026 – now</em></div>
+        </li>
+        <li>
+          <div class="tl-title">RWTH Aachen University</div>
+          <div class="tl-row"><span>Master Thesis · Urban Heat Inequality &amp; Interpretable ML</span><em>2025 – 2026</em></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Honors ────────────────────────────────────────────────── -->
+  <section class="card-block">
+    <h3 class="sub-title">Honors &amp; Awards</h3>
+    <ul class="plain-list">
+      <li><span><strong>ACM SIGSPATIAL Travel Grant</strong> · to attend SIGSPATIAL 2026</span><em>Oct 2026</em></li>
+      <li><span><strong>STIBET I Graduation Scholarship</strong> · RWTH Aachen University</span><em>Feb–Apr 2026</em></li>
+      <li><span><strong>Outstanding Graduate Scholarship</strong> · Anhui Jianzhu University</span><em>2023</em></li>
+      <li><span><strong>Third-Class Scholarship</strong> (consecutive) · Anhui Jianzhu University</span><em>2018–2023</em></li>
+    </ul>
+  </section>
+
+  <!-- ── News ──────────────────────────────────────────────────── -->
+  <section class="card-block" id="news">
+    <h3 class="sub-title">News</h3>
+    <ul class="news-list">
+      <li><span class="when">Nov 2026</span><span><a href="projects.html#uhi-bench">UHI-Bench</a> accepted as a poster at KDD 2027 (Datasets and Benchmarks Track).</span></li>
+      <li><span class="when">Nov 2026</span><span>Our paper <em>Decoupling Perception from Description: Computation-Grounded Representation Alignment between Multivariate Time Series and Language</em> received the <span class="hl">Best Paper Award</span> at the MFMB Workshop on Multimodal and Foundation Models in Banking.</span></li>
+      <li><span class="when">Oct 2026</span><span>Received an <span class="hl">ACM SIGSPATIAL Travel Grant</span> to attend SIGSPATIAL 2026.</span></li>
+      <li><span class="when">Oct 2026</span><span>Two papers accepted at ACM SIGSPATIAL 2026 (Riverside, California, Nov 3–6): <a href="projects.html#uhifm">UHIFM</a> and <a href="projects.html#sigspatial">Atmosphere-Aware Place Discovery</a>.</span></li>
+      <li><span class="when">Apr 2026</span><span>Started my PhD at the Technical University of Munich.</span></li>
+      <li><span class="when">Dec 2025</span><span>Presented <a href="projects.html#isocarp">Urban Climate Justice through Interpretable ML</a> at the 61st ISOCARP World Planning Congress, Riyadh.</span></li>
+      <li><span class="when">Oct 2025</span><span>Journal article published in <em>Buildings</em>: <a href="projects.html#buildings">Adaptive Urban Heat Mitigation Through Ensemble Learning</a>.</span></li>
+    </ul>
+  </section>
+
+  <!-- ── Selected publications ─────────────────────────────────── -->
+  <section class="card-block flush" id="publications">
+    <div class="card-title"><i class="fa-solid fa-book ico"></i> Selected Publications
+      <a class="more" href="publications.html">(view all <i class="fa-solid fa-angles-right"></i>)</a>
+    </div>
+    <p class="footnote-small"><sup>*</sup> corresponding author</p>
+
+    <div class="row-item">
+      <div class="row-thumb"><img src="project/uhi-bench/benchmark-overview.png" alt="UHI-Bench framework" width="4992" height="2879" loading="lazy" decoding="async" /></div>
+      <div class="row-body">
+        <div class="row-kicker">Accepted (Poster) · KDD 2027 · Datasets and Benchmarks</div>
+        <h3><a href="https://arxiv.org/abs/2608.23857" target="_blank" rel="noopener noreferrer">UHI-Bench: Benchmarking Dual-Source Urban Heat Island Modeling Across Cities in Diverse Climate Regimes</a></h3>
+        <div class="row-authors"><strong>Wanyun Ling</strong>, Chenxi Liu, Yi Xie, Aopu Xu, Zhuoqi Zeng, Ziyue Li</div>
+        <div class="row-venue">KDD 2027 · Datasets and Benchmarks Track</div>
+        <div class="row-links">
+          <a href="https://arxiv.org/abs/2608.23857" class="pub-link" target="_blank" rel="noopener noreferrer">arXiv</a>
+          <a href="https://arxiv.org/pdf/2608.23857" class="pub-link" target="_blank" rel="noopener noreferrer">PDF</a>
+          <a href="projects.html#uhi-bench" class="pub-link">Project</a>
         </div>
       </div>
+    </div>
 
-      <div>
-        <div style="background:rgba(255,255,255,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius);padding:1.5rem;margin-bottom:.75rem;">
-          <div style="font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:.85rem;">Current</div>
-          <div style="font-family:var(--font-head);font-weight:600;color:var(--text);margin-bottom:.2rem;">PhD Researcher</div>
-          <div style="font-size:.85rem;color:var(--text-sub);">Technical University of Munich</div>
-          <div style="font-size:.82rem;color:var(--text-sub);margin-top:.1rem;">Department of Operations and Technology</div>
-          <div style="font-family:var(--font-mono);font-size:.7rem;color:var(--text-dim);margin-top:.5rem;">Apr. 2026 – Present</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius);padding:1.5rem;">
-          <div style="font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.85rem;">Research Topics</div>
-          <div>
-            <span class="chip--tag accent">Time Series Analysis</span>
-            <span class="chip--tag">Spatio-Temporal Data Mining</span>
-            <span class="chip--tag">Urban AI</span>
-            <span class="chip--tag">Foundation Models</span>
-            <span class="chip--tag">Urban Heat Island</span>
-            <span class="chip--tag">Interpretable ML</span>
-            <span class="chip--tag">GeoAI</span>
-            <span class="chip--tag">Multimodal Learning</span>
-          </div>
+    <div class="row-item">
+      <div class="row-thumb"><img src="project/ecmlpkdd/draft_1/UHIFMroadmap.png" alt="UHI Foundation Model roadmap" loading="lazy" /></div>
+      <div class="row-body">
+        <div class="row-kicker">Accepted · ACM SIGSPATIAL 2026</div>
+        <h3><a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" target="_blank">Towards an Interpretable Urban Heat Island Foundation Model for Forecasting, Attribution, and Climate Adaptation Decision Support</a></h3>
+        <div class="row-authors"><strong>Wanyun Ling</strong></div>
+        <div class="row-venue">34th ACM SIGSPATIAL, Riverside, California, USA, November 3–6, 2026</div>
+        <div class="row-links">
+          <a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" class="pub-link" target="_blank">Abstract</a>
+          <a href="projects.html#uhifm" class="pub-link">Project</a>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ── Research Threads ───────────────────────────────────────────── -->
-<section class="section" style="padding-top:1rem;">
-  <div class="container">
-    <div class="section-label">Research</div>
-    <h2 class="section-title">Three Threads</h2>
-    <div class="section-divider"></div>
-
-    <div class="area-grid">
-      <div class="area-card fade-in">
-        <div class="area-num">01 ·</div>
-        <h3>Spatio-Temporal Foundation Models</h3>
-        <p>Foundation-model-based methods for hourly urban climate forecasting, attribution, and cross-city transfer — centred on the Urban Heat Island Foundation Model (UHIFM).</p>
-      </div>
-      <div class="area-card fade-in">
-        <div class="area-num">02 ·</div>
-        <h3>Interpretable Urban Climate AI</h3>
-        <p>Interpretable ML for urban heat exposure, climate equity, and adaptive mitigation strategies — linking SHAP attribution, scenario simulation, and Bayesian optimisation.</p>
-      </div>
-      <div class="area-card fade-in">
-        <div class="area-num">03 ·</div>
-        <h3>Multimodal Urban Understanding</h3>
-        <p>Semantic urban mapping, POI retrieval, and vibe-aware place discovery from spatial, textual, and visual signals — beyond category-based urban classification.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Current Projects ───────────────────────────────────────────── -->
-<section class="section" style="padding-top:1rem;">
-  <div class="container">
-    <div class="section-label">Work</div>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-divider"></div>
-
-    <div class="feature-grid">
-
-      <!-- UHI-Bench: benchmark overview -->
-      <a href="projects.html#uhi-bench" class="feature-card fade-in">
-        <div class="feature-media">
-          <img src="project/uhi-bench/benchmark-overview.png" alt="UHI-Bench framework: signal, mechanism, and cross-city transfer" width="4992" height="2879" loading="lazy" decoding="async" />
+    <div class="row-item">
+      <div class="row-thumb"><img src="project/Sigspatial_2026/Images/figure2.png" alt="System architecture" loading="lazy" /></div>
+      <div class="row-body">
+        <div class="row-kicker">Accepted · ACM SIGSPATIAL 2026</div>
+        <h3><a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" target="_blank">Atmosphere-Aware Place Discovery: Semantic Urban Mapping with Multimodal Vibe Enrichment</a></h3>
+        <div class="row-authors">Mikhail Aizinov, <strong>Wanyun Ling</strong>, Evgenii Kniazev, Chenxi Liu, Ziyue Li</div>
+        <div class="row-venue">34th ACM SIGSPATIAL, Riverside, California, USA, November 3–6, 2026</div>
+        <div class="row-links">
+          <a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" class="pub-link" target="_blank">Paper</a>
+          <a href="projects.html#sigspatial" class="pub-link">Project</a>
         </div>
-        <div class="feature-body">
-          <div class="feature-tag">Accepted (Poster) · KDD 2027 · Datasets and Benchmarks</div>
-          <h3>UHI-Bench</h3>
-          <p>Benchmarking dual-source urban heat island modeling across cities in diverse climate regimes — from signal consistency and environmental mechanisms to cross-city transfer.</p>
-          <span class="feature-arrow">Explore →</span>
-        </div>
-      </a>
-
-
-      <!-- Sigspatial: image cover -->
-      <a href="projects.html#sigspatial" class="feature-card fade-in">
-        <div class="feature-media">
-          <img src="project/Sigspatial_2026/Images/figure2.png" alt="System Architecture" loading="lazy" />
-        </div>
-        <div class="feature-body">
-          <div class="feature-tag">GeoAI · Accepted · ACM SIGSPATIAL 2026</div>
-          <h3>Atmosphere-Aware Place Discovery</h3>
-          <p>Multimodal deep learning for city-scale vibe mapping — fusing vision and language to capture urban atmosphere.</p>
-          <span class="feature-arrow">Explore →</span>
-        </div>
-      </a>
-
-      <!-- Buildings Journal: video cover -->
-      <a href="projects.html#buildings" class="feature-card fade-in">
-        <div class="feature-media" style="background:#000;">
-          <video autoplay muted loop playsinline preload="auto"
-            poster="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image1.png">
-            <source src="project/buildings/intro_preview.mp4" type="video/mp4" />
-          </video>
-          <span class="video-badge">▶ video</span>
-        </div>
-        <div class="feature-body">
-          <div class="feature-tag">Published · Buildings · IF 3.2 · JCR Q2 · Oct 2025</div>
-          <h3>Adaptive Urban Heat Mitigation — Ensemble Learning</h3>
-          <p>AutoGluon ensemble AutoML and scenario simulation quantify cooling effectiveness and equity implications of urban interventions in Vancouver.</p>
-          <span class="feature-arrow">Explore →</span>
-        </div>
-      </a>
-
-      <!-- ECMLPKDD: image cover -->
-      <a href="projects.html#uhifm" class="feature-card fade-in">
-        <div class="feature-media">
-          <img src="project/ecmlpkdd/draft_1/UHIFMroadmap.png" alt="UHI Foundation Model" loading="lazy" />
-        </div>
-        <div class="feature-body">
-          <div class="feature-tag">Accepted · ACM SIGSPATIAL 2026</div>
-          <h3>Urban Heat Island Foundation Model</h3>
-          <p>Interpretable spatio-temporal Transformer for multi-city UHI forecasting, attribution, and climate adaptation.</p>
-          <span class="feature-arrow">Explore →</span>
-        </div>
-      </a>
-
-      <!-- ISOCARP: video cover -->
-      <a href="projects.html#isocarp" class="feature-card fade-in">
-        <div class="feature-media" style="background:#000;">
-          <video autoplay muted loop playsinline preload="auto"
-            poster="project/ISOCARP/images/image6.png">
-            <source src="project/ISOCARP/isocarp_preview.mp4" type="video/mp4" />
-          </video>
-          <span class="video-badge">▶ video</span>
-        </div>
-        <div class="feature-body">
-          <div class="feature-tag">Published · ISOCARP World Congress · Dec 2025</div>
-          <h3>Urban Climate Justice through Interpretable ML</h3>
-          <p>Multimodal fusion of satellite UHI modeling and geotagged Twitter VADER sentiment — bridging objective heat exposure and perceived heat to surface climate justice inequities.</p>
-          <span class="feature-arrow">Explore →</span>
-        </div>
-      </a>
-
-    </div>
-
-    <div style="margin-top:1.5rem;">
-      <a href="projects.html" class="btn btn--ghost">All Projects →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── Publications ───────────────────────────────────────────────── -->
-<section id="publications" class="section" style="padding-top:1rem;">
-  <div class="container">
-    <div class="section-label">Publications &amp; Conferences</div>
-    <h2 class="section-title">Papers</h2>
-    <div class="section-divider"></div>
-
-    <!-- 2027 -->
-    <div class="pub-year-label">2027</div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--conference">Accepted (Poster) · KDD 2027</span>
-      <h3><a href="https://arxiv.org/abs/2608.23857" target="_blank" rel="noopener noreferrer">UHI-Bench: Benchmarking Dual-Source Urban Heat Island Modeling Across Cities in Diverse Climate Regimes</a></h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong>, Chenxi Liu, Yi Xie, Aopu Xu, Zhuoqi Zeng, Ziyue Li</div>
-      <div class="pub-venue">KDD 2027 · Datasets and Benchmarks Track</div>
-      <div class="pub-links">
-        <a href="https://arxiv.org/abs/2608.23857" class="pub-link" target="_blank" rel="noopener noreferrer">arXiv</a>
-        <a href="https://arxiv.org/pdf/2608.23857" class="pub-link" target="_blank" rel="noopener noreferrer">PDF</a>
-        <a href="projects.html#uhi-bench" class="pub-link">Project</a>
       </div>
     </div>
 
-    <!-- 2026 -->
-    <div class="pub-year-label">2026</div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--conference">Accepted · ACM SIGSPATIAL 2026</span>
-      <h3>
-        <a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" target="_blank">
-          Towards an Interpretable Urban Heat Island Foundation Model for Forecasting, Attribution, and Climate Adaptation Decision Support
-        </a>
-      </h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pub-venue">34th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, Riverside, California, USA, November 3–6, 2026</div>
-      <div class="pub-links">
-        <a href="project/ecmlpkdd/draft_1/phd_forum_wyl.pdf" class="pub-link" target="_blank">Abstract</a>
-        <a href="projects.html#uhifm" class="pub-link">Project</a>
+    <div class="row-item">
+      <div class="row-thumb" style="background:#000;">
+        <video muted loop playsinline preload="none" poster="project/ISOCARP/images/image6.png">
+          <source src="project/ISOCARP/isocarp_preview.mp4" type="video/mp4" />
+        </video>
+        <span class="video-badge">▶ video</span>
+      </div>
+      <div class="row-body">
+        <div class="row-kicker">Conference · ISOCARP World Planning Congress · Dec 2025</div>
+        <h3><a href="https://doi.org/10.47472/VTngcBRh" target="_blank">Urban Climate Justice through Interpretable Ensemble Learning: Heat Exposure Inequities and Planning Strategies in Metro Vancouver</a></h3>
+        <div class="row-authors"><strong>Wanyun Ling</strong></div>
+        <div class="row-venue">61st ISOCARP World Planning Congress · Riyadh</div>
+        <div class="row-links">
+          <a href="https://doi.org/10.47472/VTngcBRh" class="pub-link" target="_blank">DOI</a>
+          <a href="projects.html#isocarp" class="pub-link">Project</a>
+        </div>
       </div>
     </div>
 
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--conference">Accepted · ACM SIGSPATIAL 2026</span>
-      <h3>
-        <a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" target="_blank">
-          Atmosphere-Aware Place Discovery: Semantic Urban Mapping with Multimodal Vibe Enrichment
-        </a>
-      </h3>
-      <div class="pub-authors">Mikhail Aizinov, <strong>Wanyun Ling</strong>, Evgenii Kniazev, Chenxi Liu, Ziyue Li</div>
-      <div class="pub-venue">34th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems, Riverside, California, USA, November 3–6, 2026</div>
-      <div class="pub-links">
-        <a href="https://drive.google.com/file/d/1l4DxY0H1txNwYJ2k7t5cOeqkdhuh2-Ky/view?usp=sharing" class="pub-link" target="_blank">Paper</a>
-        <a href="projects.html#sigspatial" class="pub-link">Project</a>
+    <div class="row-item">
+      <div class="row-thumb" style="background:#000;">
+        <video muted loop playsinline preload="none" poster="project/buildings/buildings-3893714-for 2nd proofreading/images/media/image1.png">
+          <source src="project/buildings/intro_preview.mp4" type="video/mp4" />
+        </video>
+        <span class="video-badge">▶ video</span>
+      </div>
+      <div class="row-body">
+        <div class="row-kicker">Journal · Buildings · IF 3.2 · JCR Q2 · Oct 2025</div>
+        <h3><a href="https://doi.org/10.3390/buildings15213820" target="_blank">Adaptive Urban Heat Mitigation Through Ensemble Learning: Socio-Spatial Modeling and Intervention Analysis</a></h3>
+        <div class="row-authors"><strong>Wanyun Ling</strong><sup>*</sup>, Liyang Chu</div>
+        <div class="row-venue">Buildings, 15(21), 3820</div>
+        <div class="row-links">
+          <a href="https://doi.org/10.3390/buildings15213820" class="pub-link" target="_blank">DOI</a>
+          <a href="projects.html#buildings" class="pub-link">Project</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- 2025 -->
-    <div class="pub-year-label">2025</div>
+</main>
 
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--conference">Conference</span>
-      <h3>
-        <a href="https://doi.org/10.47472/VTngcBRh" target="_blank">
-          Urban Climate Justice through Interpretable Ensemble Learning: Heat Exposure Inequities and Planning Strategies in Metro Vancouver
-        </a>
-      </h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pub-venue">61st ISOCARP World Planning Congress · Riyadh, December 2025</div>
-      <div class="pub-links">
-        <a href="https://doi.org/10.47472/VTngcBRh" class="pub-link" target="_blank">DOI</a>
-        <a href="projects.html#isocarp" class="pub-link">Project</a>
-      </div>
-    </div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--published">Journal · IF 3.2 · JCR Q2</span>
-      <h3>
-        <a href="https://doi.org/10.3390/buildings15213820" target="_blank">
-          Adaptive Urban Heat Mitigation Through Ensemble Learning: Socio-Spatial Modeling and Intervention Analysis
-        </a>
-      </h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong>*, Liyang Chu</div>
-      <div class="pub-venue">Buildings, 15(21), 3820 · October 2025</div>
-      <div class="pub-links">
-        <a href="https://doi.org/10.3390/buildings15213820" class="pub-link" target="_blank">DOI</a>
-        <a href="projects.html#buildings" class="pub-link">Project</a>
-      </div>
-    </div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--conference">Conference</span>
-      <h3>
-        <a href="https://drive.google.com/file/d/1XEeXJ6phXpbKPXO7Ly1LzIKCK3nIzsDy/view?usp=sharing" target="_blank">
-          Data-Driven Circularity: Visualizing Urban Heat Inequity for Just Green Transitions – A Case Study in Vancouver
-        </a>
-      </h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pub-venue">Urban Futures Symposium 2025 · Dübendorf, Switzerland · September 2025</div>
-      <div class="pub-links">
-        <a href="https://drive.google.com/file/d/1XEeXJ6phXpbKPXO7Ly1LzIKCK3nIzsDy/view?usp=sharing" class="pub-link" target="_blank">Paper</a>
-      </div>
-    </div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status pub-status--conference">Conference</span>
-      <h3>
-        <a href="https://drive.google.com/file/d/1juG5wv_VQWsFcpZoT_dI-lWEGvm11koB/view?usp=sharing" target="_blank">
-          Ensemble Learning Approaches for Adaptive Urban Heat Mitigation: A Socio-Spatial Analysis
-        </a>
-      </h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong></div>
-      <div class="pub-venue">Global Smart Cities Summit &amp; ICUI 2025 · Hong Kong · August 2025</div>
-      <div class="pub-links">
-        <a href="https://drive.google.com/file/d/1juG5wv_VQWsFcpZoT_dI-lWEGvm11koB/view?usp=sharing" class="pub-link" target="_blank">Paper</a>
-      </div>
-    </div>
-
-    <!-- 2024 -->
-    <div class="pub-year-label">2024</div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status" style="background:rgba(99,102,241,.08);color:#6366f1;border:1px solid rgba(99,102,241,.2);">Book Chapter</span>
-      <h3>
-        <a href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" target="_blank">
-          Flut der Zeit: Aufbau einer lebendigen Nachbarschaft für verschiedene Altersgruppen
-        </a>
-      </h3>
-      <div class="pub-authors"><strong>Wanyun Ling</strong>, Yunyi Huang</div>
-      <div class="pub-venue">Städtebau Workflow: Kupferstadt Stolberg · RWTH Aachen University · pp. 36–39 · 2024</div>
-      <div class="pub-links">
-        <a href="https://tcr.rwth-aachen.de/wp-content/uploads/2024/07/Workflow05KupferstadtStolberg-compressed.pdf" class="pub-link" target="_blank">Published</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── Honors & Awards ───────────────────────────────────────────────── -->
-<section class="section" style="padding-top:1rem;">
-  <div class="container">
-    <div class="section-label">Recognition</div>
-    <h2 class="section-title">Honors &amp; Awards</h2>
-    <div class="section-divider"></div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status" style="background:rgba(245,158,11,.08);color:#d97706;border:1px solid rgba(245,158,11,.2);">Scholarship</span>
-      <h3 style="font-size:.95rem;font-weight:600;color:var(--text);margin:.25rem 0 .2rem;">STIBET I Graduation Scholarship</h3>
-      <div class="pub-authors">RWTH Aachen University</div>
-      <div class="pub-venue">Feb–Apr 2026</div>
-    </div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status" style="background:rgba(245,158,11,.08);color:#d97706;border:1px solid rgba(245,158,11,.2);">Award</span>
-      <h3 style="font-size:.95rem;font-weight:600;color:var(--text);margin:.25rem 0 .2rem;">Outstanding Graduate Scholarship</h3>
-      <div class="pub-authors">Anhui Jianzhu University</div>
-      <div class="pub-venue">2023</div>
-    </div>
-
-    <div class="pub-item fade-in">
-      <span class="pub-status" style="background:rgba(245,158,11,.08);color:#d97706;border:1px solid rgba(245,158,11,.2);">Scholarship</span>
-      <h3 style="font-size:.95rem;font-weight:600;color:var(--text);margin:.25rem 0 .2rem;">Third-Class Scholarship · consecutive</h3>
-      <div class="pub-authors">Anhui Jianzhu University</div>
-      <div class="pub-venue">2018–2023</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── Footer ─────────────────────────────────────────────────────── -->
+<!-- ── Footer ─────────────────────────────────────────────────── -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div>
-        <div class="footer-copy">© 2026 Wanyun Ling · TU Munich</div>
-        <div class="coord-display" style="margin-top:.3rem;"></div>
-      </div>
+      <div class="footer-copy">© 2026 Wanyun Ling · TU Munich</div>
       <div class="footer-links">
         <a href="mailto:wanyun.ling@tum.de">Email</a>
+        <a href="publications.html">Publications</a>
         <a href="projects.html">Projects</a>
         <a href="cv.html">CV</a>
       </div>
@@ -601,20 +256,18 @@
   </div>
 </footer>
 
-</main>
-
 <script src="js/main.js"></script>
 <script>
-/* ── Feature card videos: play on scroll into view ─────────── */
+/* ── Animated covers: play when scrolled into view, pause otherwise ── */
 (function(){
-  const vids = document.querySelectorAll('.feature-media video');
+  const vids = document.querySelectorAll('.row-thumb video');
   if (!vids.length) return;
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.play().catch(()=>{}); }
       else { e.target.pause(); }
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0.35 });
   vids.forEach(v => { v.muted = true; io.observe(v); });
 })();
 </script>

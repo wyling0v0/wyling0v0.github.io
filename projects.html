@@ -41,6 +41,10 @@
       .benchmark-figures { grid-template-columns: minmax(0, 1fr); }
     }
 
+    .benchmark-demo { margin-top: 2rem; }
+    .benchmark-demo video { display: block; width: 100%; height: auto; background: #0f172a; }
+    .benchmark-demo video:focus-visible { outline: 3px solid var(--cyan); outline-offset: -3px; }
+
     /* ── Sticky project nav ─────────────────────────────────────── */
     .proj-nav-bar {
       position: sticky;
@@ -360,22 +364,18 @@
   </style>
 </head>
 <body>
-<canvas id="bg-canvas"></canvas>
 
 <!-- ── Navigation ───────────────────────────────────────────── -->
 <nav class="nav">
-  <div class="nav-logo">
-    <span class="nav-dot"></span>
-    Wanyun Ling
-    <span>/ PhD Researcher</span>
-  </div>
+  <a class="brand" href="index.html">Wanyun Ling</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="publications.html">Publications</a></li>
     <li><a href="projects.html" class="active">Projects</a></li>
-    <li><a href="index.html#publications">Publications</a></li>
-    <li><a href="cv.html">CV</a></li>
   </ul>
-  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <main>
@@ -448,6 +448,17 @@
       </div>
     </div>
   </div>
+  <figure class="benchmark-figure benchmark-demo" aria-labelledby="uhi-bench-demo-title">
+    <video controls playsinline preload="none" poster="project/uhi-bench/uhi-bench-demo-poster.jpg" width="1920" height="1056" aria-label="UHI-Bench demonstration recording" aria-describedby="uhi-bench-demo-caption">
+      <source src="project/uhi-bench/uhi-bench-demo.mp4" type="video/mp4" />
+      Your browser does not support embedded video. <a href="project/uhi-bench/uhi-bench-demo.mp4">Open the demonstration video</a>.
+    </video>
+    <figcaption id="uhi-bench-demo-caption">
+      <strong id="uhi-bench-demo-title">UHI-Bench demo</strong>
+      A short screen recording of the UHI-Bench interface.
+      <br><a class="benchmark-figure-link" href="project/uhi-bench/uhi-bench-demo.mp4" target="_blank" rel="noopener noreferrer">Open video ↗</a>
+    </figcaption>
+  </figure>
   <div class="benchmark-figures" aria-label="UHI-Bench research figures">
     <figure class="benchmark-figure benchmark-figure--wide">
       <a href="project/uhi-bench/benchmark-overview.png" target="_blank" rel="noopener noreferrer" aria-label="View full-size figure: Benchmark framework: signal, mechanism, and transfer">
