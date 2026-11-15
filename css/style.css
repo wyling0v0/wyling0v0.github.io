@@ -1499,8 +1499,30 @@ body {
 .news-list .when { font-family: var(--font-mono); font-size: .74rem; color: var(--cyan); padding-top: 2px; }
 .news-list .hl { background: var(--cyan-dim); border-radius: 4px; padding: 0 4px; font-weight: 600; }
 
+/* ── Publications page (compact list) ── */
+.pubs-main { max-width: 860px; margin: 0 auto; padding: calc(var(--nav-h) + 2.5rem) 24px 40px; }
+.pubs-title { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; margin-bottom: .25rem; }
+.pubs-note { font-size: .8rem; color: var(--text-sub); margin-bottom: 1.25rem; }
+.pubs-card { padding-top: 12px; }
+.pubs-year {
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 500;
+  letter-spacing: .18em; color: var(--cyan);
+  margin: 1.4rem 0 .2rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border);
+}
+.pubs-year:first-of-type { margin-top: .6rem; }
+.pl-item { padding: 12px 0 4px; }
+.pl-item h3 { font-size: .98rem; font-weight: 600; line-height: 1.45; margin-bottom: 3px; }
+.pl-item h3 a { color: var(--text); }
+.pl-item h3 a:hover { color: var(--cyan); }
+.pl-authors { font-size: .84rem; color: var(--text-sub); }
+.pl-authors strong { color: var(--text); font-weight: 600; }
+.pl-venue { font-size: .84rem; font-style: italic; color: var(--text-sub); margin-top: 1px; }
+.pl-links { font-style: normal; margin-left: 8px; }
+.pl-links a { font-size: .78rem; font-weight: 500; margin-right: 10px; }
+
 @media (max-width: 768px) {
   .grid-2 { grid-template-columns: 1fr; gap: 22px 0; }
+  .pubs-main { padding-left: 16px; padding-right: 16px; }
   .news-list li { grid-template-columns: 70px 1fr; gap: 10px; }
   .plain-list li, .tl-row { flex-direction: column; gap: 0; }
   .plain-list li { padding: 6px 0; }
